@@ -8,13 +8,13 @@
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" 
             aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
-          <img src={require('../../../assets/Logo/logo_reduced_width.png')} width="100" height="100"
+          <img src={require('../../../assets/Logo/Icon/FullColor_TransparentBg_RECT.png')} width="100" height="100"
              className="d-inline-block align-top" alt=""></img>
         </button>
         <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
           <a className="navbar-brand geeky-navbar-brand" href="/">
-          <img src={require('../../../assets/Logo/logo_reduced_width.png')} width="150" height="100"
-             className="d-inline-block align-top" alt=""></img>
+          <img src={require('../../../assets/Logo/Inline/FullColor_TransparentBg_RECT.png')} width="300" height="50"
+             className="d-inline-block align-top " alt=""></img>
           </a>
           <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
           

@@ -4,9 +4,9 @@
   "scripts": {
     
     "copyvendor:js":"rimraf ./build && mkdir build && mkdir build/vendor && cpx -v \"vendor/**/*.min.js\" build/vendor/ &&  cpx -v \"vendor/**/*.min.js.map\" build/vendor/",
-    "copyvendor:mp4":"run-p copyvendor:js",
-    "copyvendor:webfonts":"run-p copyvendor:mp4 &&  cpx -v \"vendor/**/*.mp4\" build/vendor/",
-    "copyvendor:img":"run-p copyvendor:webfonts &&  cpx -v \"vendor/**/webfonts/*\" build/vendor/",
+    "copyvendor:mp4":"run-p copyvendor:js &&  cpx -v \"vendor/**/*.mp4\" build/vendor/",
+    "copyvendor:webfonts":"run-p copyvendor:mp4 &&  cpx -v \"vendor/**/webfonts/*\" build/vendor/",
+    "copyvendor:img":"run-p copyvendor:webfonts &&  cpx -v \"vendor/**/img/*\" build/vendor/",
     "copyvendor:css":"run-p copyvendor:img  && cpx -v \"vendor/**/*.css\" build/vendor/ &&  cpx -v \"vendor/**/*.css.map\" build/vendor/",
     "prestart":"run-p copyvendor:css",
     "start": "run-p start:dev start:api",

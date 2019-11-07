@@ -3,15 +3,89 @@
 	{
 		"selected_items":
 		[
+			[
+				"ov",
+				"overflow-y\tproperty"
+			],
+			[
+				"w",
+				"width\tproperty"
+			],
+			[
+				"max",
+				"max-height\tproperty"
+			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "build/index.html",
+			"file": "src/index.js",
 			"settings":
 			{
-				"buffer_size": 303,
+				"buffer_size": 515,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/components/common/Header.js",
+			"settings":
+			{
+				"buffer_size": 1799,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/css/index.css",
+			"settings":
+			{
+				"buffer_size": 1862,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "vendor/freelancer/css/freelancer.css",
+			"settings":
+			{
+				"buffer_size": 182770,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "package.json",
+			"settings":
+			{
+				"buffer_size": 3771,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/components/home/HomePage.js",
+			"settings":
+			{
+				"buffer_size": 1928,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "webpack.config.dev.js",
+			"settings":
+			{
+				"buffer_size": 1243,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/index.html",
+			"settings":
+			{
+				"buffer_size": 933,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -28,6 +102,14 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control:",
+				"Package Control: List Packages"
+			]
 		],
 		"width": 0.0
 	},
@@ -52,14 +134,50 @@
 	"expanded_folders":
 	[
 		"/Users/arunpandey/Documents/workspace/Website-React",
-		"/Users/arunpandey/Documents/workspace/Website-React/build"
+		"/Users/arunpandey/Documents/workspace/Website-React/src",
+		"/Users/arunpandey/Documents/workspace/Website-React/src/components",
+		"/Users/arunpandey/Documents/workspace/Website-React/src/components/common",
+		"/Users/arunpandey/Documents/workspace/Website-React/src/components/home",
+		"/Users/arunpandey/Documents/workspace/Website-React/src/components/java",
+		"/Users/arunpandey/Documents/workspace/Website-React/src/css",
+		"/Users/arunpandey/Documents/workspace/Website-React/vendor",
+		"/Users/arunpandey/Documents/workspace/Website-React/vendor/freelancer",
+		"/Users/arunpandey/Documents/workspace/Website-React/vendor/freelancer/css"
 	],
 	"file_history":
 	[
-		"/Users/arunpandey/Documents/workspace/Website-React/build/favicon.ico",
+		"/Users/arunpandey/Documents/workspace/Website-React/assets/css/freelancer.css",
+		"/Users/arunpandey/Documents/workspace/Website-React/src/components/common/Header.js",
 		"/Users/arunpandey/Documents/workspace/Website-React/src/components/home/HomePage.js",
-		"/Users/arunpandey/Documents/workspace/Website-React/firebase.json",
+		"/Users/arunpandey/Documents/workspace/Website-React/src/components/java/JavaHomePage.js",
+		"/Users/arunpandey/Documents/workspace/Website-React/assets/css/freelancer.min.css",
+		"/Users/arunpandey/Documents/workspace/Website-React/webpack.config.prod.js",
 		"/Users/arunpandey/Documents/workspace/Website-React/webpack.config.dev.js",
+		"/Users/arunpandey/Documents/workspace/Website-React/package.json",
+		"/Users/arunpandey/Documents/workspace/Website-React/src/index.js",
+		"/Users/arunpandey/Documents/workspace/Website-React/src/index.html",
+		"/Users/arunpandey/Documents/workspace/Website-React/build/index.html",
+		"/Users/arunpandey/Documents/workspace/Website-React/build/896e20e26ad07dc63c9526ed814117e9.ttf",
+		"/Users/arunpandey/Documents/workspace/Website-React/src/components/common/Footer.js",
+		"/Users/arunpandey/Documents/workspace/Website-React/src/components/App.js",
+		"/Users/arunpandey/Documents/workspace/Website-React/assets/css/coming-soon.min.css",
+		"/Users/arunpandey/Documents/workspace/Website-React/src/css/index.css",
+		"/Users/arunpandey/Documents/workspace/Website-React/assets/css/coming-soon.css",
+		"/Users/arunpandey/Documents/workspace/Website-React/src/components/PageNotFound.js",
+		"/Users/arunpandey/Documents/workspace/Website-React/src/components/about/AboutPage.js",
+		"/Users/arunpandey/Documents/workspace/Website-React/src/css/coming-soon.css",
+		"/Users/arunpandey/Documents/workspace/Website-React/src/index.css",
+		"/Users/arunpandey/Documents/workspace/Website-React/node_modules/startbootstrap-sb-admin-2/index.html",
+		"/Users/arunpandey/Documents/workspace/Website-React/src/vendor/sb-admin/css/sb-admin-2.css",
+		"/Users/arunpandey/Documents/workspace/Website-React/node_modules/startbootstrap-sb-admin-2/js/sb-admin-2.js",
+		"/Users/arunpandey/Documents/workspace/Website-React/node_modules/startbootstrap-sb-admin-2/js/sb-admin-2.min.js",
+		"/Users/arunpandey/Documents/workspace/Website-React/Website.sublime-project",
+		"/Users/arunpandey/Documents/workspace/Website-React/package-lock.json",
+		"/Users/arunpandey/Documents/workspace/Website-React/README.md",
+		"/Users/arunpandey/Documents/workspace/Website-React/src/favicon.ico",
+		"/Users/arunpandey/Library/Application Support/Sublime Text 3/Packages/Package Control/Package Control.sublime-settings",
+		"/Users/arunpandey/Documents/workspace/Website-React/build/favicon.ico",
+		"/Users/arunpandey/Documents/workspace/Website-React/firebase.json",
 		"/Users/arunpandey/Documents/workspace/Website/dist/index.html",
 		"/Users/arunpandey/Documents/workspace/Website/package-lock.json",
 		"/Users/arunpandey/Documents/workspace/Website/firebase.json",
@@ -69,13 +187,14 @@
 	],
 	"find":
 	{
-		"height": 24.0
+		"height": 39.0
 	},
 	"find_in_files":
 	{
 		"height": 101.0,
 		"where_history":
 		[
+			""
 		]
 	},
 	"find_state":
@@ -83,6 +202,30 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"#mainNav .navbar-nav",
+			"#mainNav .navbar-nav>li.nav-item>a.nav-link.active",
+			"navbar-shrink",
+			"class=",
+			"index",
+			"webpackBundleAnalyzer",
+			"/(node_modules|bower_components)/",
+			"me=\"\"",
+			"class=",
+			"video",
+			"file",
+			"class=\"",
+			"Nav.Link",
+			"Nav.Link href",
+			"sideba",
+			"boo",
+			"plural",
+			"sight",
+			"plural",
+			"url",
+			"image",
+			"corey",
+			"firebase",
+			"no-mixed-spaces-and-tabs"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -90,6 +233,11 @@
 		"regex": false,
 		"replace_history":
 		[
+			"className=",
+			"me=\"",
+			"className=\"",
+			"NavLink",
+			"NavLink to"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -100,33 +248,239 @@
 	"groups":
 	[
 		{
+			"selected": 7,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "build/index.html",
+					"file": "src/index.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 303,
+						"buffer_size": 515,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								303,
-								303
+								169,
+								169
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/components/common/Header.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1799,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								253,
+								260
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/css/index.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1862,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								526,
+								526
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "vendor/freelancer/css/freelancer.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 182770,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								179997,
+								179764
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 144949.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "package.json",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3771,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1416,
+								1418
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/components/home/HomePage.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1928,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								305,
+								305
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "webpack.config.dev.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1243,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								337,
+								337
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "src/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 933,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								91,
+								91
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 1,
-							"translate_tabs_to_spaces": true,
-							"word_wrap": false
+							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 1250.0,
+						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
@@ -138,11 +492,11 @@
 	],
 	"incremental_find":
 	{
-		"height": 38.0
+		"height": 24.0
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 36.0
 	},
 	"layout":
 	{
@@ -175,7 +529,7 @@
 	"project": "Website.sublime-project",
 	"replace":
 	{
-		"height": 44.0
+		"height": 70.0
 	},
 	"save_all_on_build": true,
 	"select_file":

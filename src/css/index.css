@@ -20,6 +20,11 @@
   padding: 10px !important;
 }
 
+#mainNav{
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
 #mainNav .navbar-nav > li.nav-item > a.nav-link.active:active, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:focus, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:hover {
     color: #fff;
     background: #1abc9c;
