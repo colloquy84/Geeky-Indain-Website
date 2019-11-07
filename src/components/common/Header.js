@@ -20,8 +20,8 @@
           
           </ul>
           <form className="form-inline my-2 my-lg-0">
-            <ul className="navbar-nav mr-auto mt-2 mt-lg-0 rounded">
-              <li className="nav-item mx-0 mx-lg-1">
+            <ul className="navbar-nav mr-auto mt-2 mt-lg-0 mx-md-0 rounded">
+              <li className="nav-item mx-0 mx-lg-1 mx-md-1">
                 <NavLink className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" 
                   to="/javaHome" activeStyle={activeStyle}>Java</NavLink>
               </li>

@@ -16,6 +16,15 @@
     overflow-y: scroll;
 }
 
+#mainNav a.nav-link{
+  padding: 10px !important;
+}
+
+#mainNav .navbar-nav > li.nav-item > a.nav-link.active:active, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:focus, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:hover {
+    color: #fff;
+    background: #1abc9c;
+  }
+
 nav {
   padding: 20px 0 20px 0;
 }
