@@ -3,7 +3,7 @@
   "description": "The Geeky Indian website design and developed by Arun Pandey",
   "scripts": {
     
-    "copyvendor:js":"rimraf ./build && mkdir build && mkdir build/vendor && cpx -v \"vendor/**/*.min.js\" build/vendor/ &&  cpx -v \"vendor/**/*.min.js.map\" dist/vendor/",
+    "copyvendor:js":"rimraf ./build && mkdir build && mkdir build/vendor && cpx -v \"vendor/**/*.min.js\" build/vendor/ &&  cpx -v \"vendor/**/*.min.js.map\" build/vendor/",
     "copyvendor:mp4":"run-p copyvendor:js",
     "copyvendor:webfonts":"run-p copyvendor:mp4 &&  cpx -v \"vendor/**/*.mp4\" build/vendor/",
     "copyvendor:img":"run-p copyvendor:webfonts &&  cpx -v \"vendor/**/webfonts/*\" build/vendor/",
