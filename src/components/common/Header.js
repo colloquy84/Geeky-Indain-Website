@@ -23,10 +23,12 @@
             <ul className="navbar-nav mr-auto mt-2 mt-lg-0 mx-md-0 rounded">
               <li className="nav-item mx-0 mx-lg-1 mx-md-1">
                 <NavLink className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" 
-                  to="/javaHome" activeStyle={activeStyle}>Java</NavLink>
+                  to="/javaHome" activeStyle={activeStyle}>Java&nbsp;&nbsp;<i className="fab fa-java"/>
+                  </NavLink>
               </li>
               <li className="nav-item mx-0 mx-lg-1">
-                <NavLink className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" to="/about">About</NavLink>
+                <NavLink className="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" to="/about">
+                About Us&nbsp;&nbsp;<span className="glyphicon glyphicon-home"/></NavLink>
               </li>
             </ul>
           </form>

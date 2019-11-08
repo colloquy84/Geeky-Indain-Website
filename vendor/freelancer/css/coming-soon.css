@@ -26,38 +26,8 @@ h6 {
   font-weight: 700;
 }
 
-video {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  transform: translateX(-50%) translateY(-50%);
-  z-index: 0;
-}
 
-@media (pointer: coarse) and (hover: none) {
-  body {
-    background: url("../img/bg-mobile-fallback.jpg") #002E66 no-repeat center center scroll;
-    background-position: cover;
-  }
-  body video {
-    display: none;
-  }
-}
 
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: #cd9557;
-  opacity: 0.7;
-  z-index: 1;
-}
 
 .masthead {
   position: relative;
