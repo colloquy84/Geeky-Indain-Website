@@ -4,7 +4,7 @@
   const Header = () => {
     const activeStyle = { /*color: "#F15B2A" */};
     return (
-      <nav className="navbar navbar-icon-top navbar-expand-lg navbar-dark bg-dark">
+      <nav className="navbar fixed-top navbar-icon-top navbar-expand-md navbar-dark bg-dark">
         <a className="navbar-brand geeky-navbar-brand" href="/">
             <img src={require('../../../assets/Logo/Inline-Dark-BG/FullColor_TransparentBg_RECT.png')}
             width="300" height="50" className="d-inline-block align-top " alt=""></img>

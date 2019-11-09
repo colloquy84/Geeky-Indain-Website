@@ -3,7 +3,7 @@ import SocialLinks from "../common/SocialLinks";
 
 const HomePage = () => (
   <div className="row flex-xl-nowrap geek-main-content">
-	  <div className="masthead">
+	  <div className="masthead col-md-7">
 	    <div className="masthead-bg"></div>
 	    <div className="container h-100">
 	      <div className="row h-100">
@@ -24,7 +24,6 @@ const HomePage = () => (
 	      </div>
 	    </div>
 	  </div>
-
 	  <SocialLinks/>
   </div>
 );
