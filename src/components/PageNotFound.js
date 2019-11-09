@@ -3,7 +3,7 @@ import React from "react";
 const PageNotFound = () => (
 	<div className="row flex-xl-nowrap geek-main-content">
 	    <section id="not-found" className="notFoundPage">
-		    <div id="title">Page you are looking for is not found.</div>
+		    <div id="title"></div>
 		    <div className="circles">
 		      <p>404<br/>
 		       <small>PAGE NOT FOUND</small>
