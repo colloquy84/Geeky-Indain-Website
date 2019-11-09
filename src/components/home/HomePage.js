@@ -13,7 +13,7 @@ const HomePage = () => (
 	            <p className="mb-5">We are working hard to finish the development of this site. Our target launch date is
 	              <strong>&nbsp;May 2020</strong>. Sign up for updates using the form below</p>
 	            <div className="input-group input-group-newsletter">
-	              <input type="email" className="form-control" placeholder="Enter email..." aria-label="Enter email..." 
+	              <input type="email" className="form-control" placeholder="Enter email..." aria-label="Enter email..."
 	              aria-describedby="basic-addon"/>
 	              <div className="input-group-append">
 	                <button className="btn btn-secondary" type="button">Notify Me!</button>
@@ -25,7 +25,7 @@ const HomePage = () => (
 	    </div>
 	  </div>
 
-	  <SocialLinks/> 
+	  <SocialLinks/>
   </div>
 );
 

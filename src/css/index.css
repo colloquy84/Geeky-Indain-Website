@@ -1,61 +1,59 @@
 @import url('pageNotFound.css');
 
-#app {
-  widows: 100%;
+#mainApp {
   margin: 0;
+  padding: 0;
   width: 100%;
   height: 100%;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  overflow:visible;
 }
 
-.mainApp{
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: scroll;
+.mainApp {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
 }
 
-#mainNav a.nav-link{
+#mainNav a.nav-link {
   padding: 10px !important;
 }
 
-#mainNav{
+#mainNav {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
 
-#mainNav .navbar-nav > li.nav-item > a.nav-link.active:active, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:focus, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:hover {
-    color: #fff;
-    background: #1abc9c;
+#mainNav .navbar-nav>li.nav-item>a.nav-link.active:active, #mainNav .navbar-nav>li.nav-item>a.nav-link.active:focus, #mainNav .navbar-nav>li.nav-item>a.nav-link.active:hover {
+  color: #fff;
+  background: #1abc9c;
 }
 
 body {
-    background: url("../../assets/Logo/Normal/ICON_TEXT_TRANSPARENT_BG.png") #fff no-repeat center center scroll;
-    background-position: cover;
-    z-index: -5;
-  }
+  background: url("../../assets/Logo/Normal/ICON_TEXT_TRANSPARENT_BG.png") #fff no-repeat center center scroll;
+  background-position: cover;
+  z-index: -5;
+}
 
 nav {
   padding: 20px 0 20px 0;
 }
 
 img {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
-.geek-main-content{
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-    z-index: 1;
+.geek-main-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  z-index: 1;
 }
 
-.topRouterWrapper{
+.topRouterWrapper {
   width: 100%;
   height: 100%;
 }
@@ -71,40 +69,36 @@ img {
   z-index: -5;
 }
 
-.masthead-content {
-  min-height: 350px;
-}
-
-.geeky-navbar-brand{
-    padding: 0;
-    margin: 0;
+.geeky-navbar-brand {
+  padding: 0;
+  margin: 0;
 }
 
 .bd-sidebar {
-    -webkit-box-ordinal-group: 1;
-    -ms-flex-order: 0;
-    order: 0;
-    border-bottom: 1px solid rgba(0,0,0,.1);
+  -webkit-box-ordinal-group: 1;
+  -ms-flex-order: 0;
+  order: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, .1);
 }
 
 .bd-toc {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 4rem;
-    height: calc(100vh - 4rem);
-    overflow-y: auto;
-    -webkit-box-ordinal-group: 3;
-    -ms-flex-order: 2;
-    order: 2;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-    font-size: .875rem;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 4rem;
+  height: calc(100vh - 4rem);
+  overflow-y: auto;
+  -webkit-box-ordinal-group: 3;
+  -ms-flex-order: 2;
+  order: 2;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  font-size: .875rem;
 }
 
 .bd-content {
-    -webkit-box-ordinal-group: 2;
-    -ms-flex-order: 1;
-    order: 1;
+  -webkit-box-ordinal-group: 2;
+  -ms-flex-order: 1;
+  order: 1;
 }
 
 .social-icons {
@@ -120,13 +114,13 @@ img {
   text-align: center;
 }
 
-.social-icons ul > li {
+.social-icons ul>li {
   margin-left: 1rem;
   margin-right: 1rem;
   display: inline-block;
 }
 
-.social-icons ul > li > a {
+.social-icons ul>li>a {
   display: block;
   color: white;
   background-color: #4c75a3;
@@ -139,18 +133,18 @@ img {
   z-index: 1;
 }
 
-.social-icons ul  li  a .fab{
+.social-icons ul li a .fab {
   position: relative;
   transition: 0.5s;
   z-index: 2;
 }
 
-.social-icons ul  li  a:hover .fab {
+.social-icons ul li a:hover .fab {
   transform: rotateY(360deg);
   color: #fff;
 }
 
-.social-icons ul > li > a:before {
+.social-icons ul>li>a:before {
   content: '';
   position: absolute;
   top: 0;
@@ -164,33 +158,33 @@ img {
   z-index: 3;
 }
 
-.social-icons ul  li  a:hover:before {
-  right:100%;
+.social-icons ul li a:hover:before {
+  right: 100%;
   background: #faa;
   z-index: 1;
 }
 
-.social-icons ul  li:nth-child(1)  a{
+.social-icons ul li:nth-child(1) a {
   background: #55acee;
 }
 
-.social-icons ul  li:nth-child(2)  a{
+.social-icons ul li:nth-child(2) a {
   background: #3b5999;
 }
 
-.social-icons ul  li:nth-child(3)  a{
+.social-icons ul li:nth-child(3) a {
   background: #0077B5;
 }
 
-.social-icons ul  li:nth-child(1)  a:hover:before{
-  background: #55acee;  
+.social-icons ul li:nth-child(1) a:hover:before {
+  background: #55acee;
 }
 
-.social-icons ul  li:nth-child(2)  a:hover:before{
+.social-icons ul li:nth-child(2) a:hover:before {
   background: #3b5999;
 }
 
-.social-icons ul  li:nth-child(3)  a:hover:before{
+.social-icons ul li:nth-child(3) a:hover:before {
   background: #0077B5;
 }
 
@@ -202,12 +196,10 @@ img {
   text-align: center;
 }
 
-.social-icons-horizontal .list-unstyled-item{
+.social-icons-horizontal .list-unstyled-item {
   display: inline-block;
   margin-right: 15px;
 }
-
-
 
 @media (min-width: 768px) {
   .social-icons {
@@ -217,20 +209,24 @@ img {
     bottom: 2rem;
     width: auto;
   }
+
   .social-icons ul {
     margin-top: 0;
     width: auto;
   }
-  .social-icons ul > li {
+
+  .social-icons ul>li {
     display: block;
     margin-left: 0;
     margin-right: 0;
     margin-bottom: 2rem;
   }
-  .social-icons ul > li:last-child {
+
+  .social-icons ul>li:last-child {
     margin-bottom: 0;
   }
-  .social-icons ul > li > a {
+
+  .social-icons ul>li>a {
     transition: all 0.2s ease-in-out;
     font-size: 2rem;
     line-height: 4rem;
@@ -247,32 +243,25 @@ img {
   }
 }
 
-@media (min-width: 1200px)
-.bd-sidebar {
-    -webkit-box-flex: 0;
-    -ms-flex: 0 1 320px;
-    flex: 0 1 320px;
+@media (min-width: 1200px) .bd-sidebar {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 1 320px;
+  flex: 0 1 320px;
 }
 
-@media (min-width: 768px)
-.bd-sidebar {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 4rem;
-    z-index: 1000;
-    height: calc(100vh - 4rem);
+@media (min-width: 768px) .bd-sidebar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 4rem;
+  z-index: 1000;
+  height: calc(100vh - 4rem);
 }
 
-@media (min-width: 768px)
-.bd-sidebar {
-    border-right: 1px solid rgba(0,0,0,.1);
+@media (min-width: 768px) .bd-sidebar {
+  border-right: 1px solid rgba(0, 0, 0, .1);
 }
 
-.white-underline-text{
+.white-underline-text {
   text-decoration: underline;
   color: #fff;
 }
-
-
-
-
