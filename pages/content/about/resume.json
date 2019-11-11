@@ -1,0 +1,8 @@
+{
+  "heading":"Resume Page",
+  "dataList":[
+    {"data":"Sample Resume first paragraph"},
+    {"data":"Sample Resume Second paragraph"},
+    {"data":"Sample Resume Third paragraph"}
+  ]
+}

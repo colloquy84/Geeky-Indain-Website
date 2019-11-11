@@ -1,0 +1,7 @@
+{
+  "links": [
+    {"name":"Resume", "page":"resume"},
+    {"name":"Biodata", "page":"biodata"},
+    {"name":"Signature", "page":"signature"}
+  ]
+}

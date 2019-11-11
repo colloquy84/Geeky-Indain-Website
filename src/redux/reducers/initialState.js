@@ -1,5 +1,4 @@
 export default {
-  courses: [],
-  authors: [],
+  currentPage: {sideNav:{}, pageContent:{}},
   apiCallsInProgress: 0
 };
