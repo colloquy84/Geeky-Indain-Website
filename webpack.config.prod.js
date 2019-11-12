@@ -45,7 +45,7 @@ module.exports = {
     new webpack.DefinePlugin({
       // This global makes sure React is built in prod mode.
       "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
-      "process.env.API_URL": JSON.stringify("/")
+      "process.env.API_URL": JSON.stringify("https://thegeekyindian.github.io")
     }),
     new HtmlWebpackPlugin({
       template: "src/index.html",
