@@ -27,7 +27,7 @@ export function getPageContentSuccess(pageContent) {
 
 export function getPageContent(pageType,page) {
   return function(dispatch) {
-    dispatch(beginApiCall());
+    // dispatch(beginApiCall());
     return pageDetailsApi
       .getPageContent(pageType, page)
       .then(content => {

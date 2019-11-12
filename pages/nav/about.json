@@ -1,7 +1,51 @@
 {
-  "links": [
-    {"name":"Resume", "page":"resume"},
-    {"name":"Biodata", "page":"biodata"},
-    {"name":"Signature", "page":"signature"}
+  "links": [{
+      "key":"resume",
+      "name": "Resume",
+      "page": "resume",
+      "subLinks": [{
+          "key":"resume1",
+          "name": "Resume1",
+          "page": "resume"
+        },
+        {
+          "key":"resume2",
+          "name": "Resume2",
+          "page": "resume"
+        }
+      ]
+    },
+    {
+      "key":"biodata",
+      "name": "Biodata",
+      "page": "biodata",
+      "subLinks": [{
+          "key":"biodata1",
+          "name": "Biodata 1",
+          "page": "biodata"
+        },
+        {
+          "key":"biodata12",
+          "name": "Biodata 2",
+          "page": "biodata",
+          "subLinks": [{
+            "key":"biodata21",
+              "name": "Biodata 2.1",
+              "page": "biodata"
+            },
+            {
+              "key":"biodata22",
+              "name": "Biodata 2.1",
+              "page": "biodata"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key":"signature",
+      "name": "Signature",
+      "page": "signature"
+    }
   ]
 }

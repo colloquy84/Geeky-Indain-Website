@@ -3,7 +3,7 @@
 
   const SocialLinks = (prop) => {
     return (
-     	<div className={prop.horizontal ? 'social-icons social-icons-horizontal' : 'social-icons'}>
+     	<div className={prop.horizontal ? 'social-icons social-icons-horizontal' : 'social-icons d-none d-md-block'}>
 	        <ul className="list-unstyled text-center mb-0">
 	          <li className="list-unstyled-item">
 	            <a href="https://twitter.com/TheGeekyIndian" target="_blank" rel="noopener noreferrer">

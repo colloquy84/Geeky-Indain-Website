@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import SideBarLink from "./SideBarLink";
+
 
 class SideBar extends React.Component {
   state = {};
@@ -19,20 +21,32 @@ class SideBar extends React.Component {
 
   render() {
     return (
-      <div > {this.props.sideNav && this.props.sideNav.links && this.props.sideNav.links.map(nav => {
+      <nav id="sidebar" className={this.props.sideBarVisible?'active':''}>
+          <div className="sidebar-header">
+              <a className="navbar-brand geeky-navbar-brand" href="/">
+                <img src={require('../../../../assets/Logo/Inline/ICON_ONLY_TransparentBg_RECT.png')}
+                width="100" height="50" className="d-inline-block align-top rotate" alt=""></img>
+              </a>
+          </div>
+      <ul className="list-unstyled components">
+        <p>About</p>
+      {this.props.sideNav && this.props.sideNav.links &&
+        this.props.sideNav.links.map(link => {
           return (
-                <a className="btn btn-light" key={nav.page}
-                  href="#" onClick={() => this.props.onPageChange(nav.page)}>{nav.name}</a>
+                <SideBarLink link={link} key={link.key}
+                      onLinkSelected={() => this.props.onPageChange(link.page)}/>
           );
         })
       }
-    </div>
+      </ul>
+    </nav>
     );
   }
 }
 
 SideBar.propTypes = {
   firstPageLoaded: PropTypes.bool.isRequired,
+  sideBarVisible:PropTypes.bool.isRequired,
   sideNav: PropTypes.object.isRequired,
   onPageChange: PropTypes.func.isRequired
 };
