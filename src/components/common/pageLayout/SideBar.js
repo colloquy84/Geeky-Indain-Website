@@ -9,13 +9,13 @@ class SideBar extends React.Component {
   componentDidMount() {
     const {
       sideNav,
-      firstPageLoaded
+      currentLoadedPage
     } = this.props;
 
-    if (!firstPageLoaded && sideNav !=null && sideNav.links && sideNav.links.length != 0) {
-      this.props.onPageChange(sideNav.links[0].page).catch(error => {
-        alert("Loading "+sideNav.links[0].page+" page failed" + error);
-      });
+    if (currentLoadedPage == '' && sideNav !=null && sideNav.links && sideNav.links.length != 0) {
+      this.props.onPageChange(sideNav.links[0].page);
+    }else if(currentLoadedPage != ''){
+      this.props.onPageChange(currentLoadedPage);
     }
   }
 
@@ -29,12 +29,13 @@ class SideBar extends React.Component {
               </a>
           </div>
       <ul className="list-unstyled components">
-        <p>About</p>
+      {this.props.sideNav && <p>{this.props.sideNav.title}</p>}
       {this.props.sideNav && this.props.sideNav.links &&
         this.props.sideNav.links.map(link => {
           return (
-                <SideBarLink link={link} key={link.key}
-                      onLinkSelected={() => this.props.onPageChange(link.page)}/>
+                <SideBarLink link={link} key={link.key} parentRouteUrl={this.props.parentRouteUrl}
+                      onLinkSelected={() => this.props.onPageChange(link.page)}
+                      currentLoadedPage = {this.props.currentLoadedPage}/>
           );
         })
       }
@@ -45,9 +46,10 @@ class SideBar extends React.Component {
 }
 
 SideBar.propTypes = {
-  firstPageLoaded: PropTypes.bool.isRequired,
+  currentLoadedPage: PropTypes.string.isRequired,
   sideBarVisible:PropTypes.bool.isRequired,
   sideNav: PropTypes.object.isRequired,
+  parentRouteUrl: PropTypes.string.isRequired,
   onPageChange: PropTypes.func.isRequired
 };
 

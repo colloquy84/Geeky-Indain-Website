@@ -2,8 +2,8 @@ import React from "react";
 import SocialLinks from "../common/SocialLinks";
 
 const HomePage = () => (
-  <div className="row flex-xl-nowrap geek-main-content">
-	  <div className="masthead col-md-7">
+  <div className="row flex-xl-nowrap geek-main-content noBackgroundLogo">
+	  <div className="masthead col-md-7 order-1">
 	    <div className="masthead-bg"></div>
 	    <div className="container h-100">
 	      <div className="row h-100">
@@ -24,6 +24,12 @@ const HomePage = () => (
 	      </div>
 	    </div>
 	  </div>
+    <div className="col-md-5 order-2 row">
+        <div className="m-auto">
+          <img src={require('../../../assets/Logo/Icon/FullColor_TransparentBg_1024x1024_72dpi.png')}
+            width="400" height="50" className="d-inline-block align-top rotate" alt=""></img>
+        </div>
+    </div>
 	  <SocialLinks/>
   </div>
 );

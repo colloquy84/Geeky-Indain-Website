@@ -1,13 +1,9 @@
 import React from "react";
-import {
-  connect
-} from "react-redux";
+import { connect } from "react-redux";
+import { Route } from "react-router-dom";
 import * as pageDetailAction from "../../../redux/actions/pageDetailAction";
 import PropTypes from "prop-types";
-import {
-  bindActionCreators
-} from "redux";
-import { toast } from "react-toastify";
+import { bindActionCreators} from "redux";
 import './sideBar.css';
 
 import SideBar from "./SideBar";
@@ -16,6 +12,18 @@ import Spinner from "../Spinner";
 
 class SideBarWrapper extends React.Component {
   state = {firstPageLoaded: false, sideBarVisible : false, currentLoadedPage : ''};
+
+  componentWillReceiveProps(newProps){
+    const path = location.pathname;
+    if(path && path.indexOf("/") >= 0 && path.indexOf("/") != path.lastIndexOf("/")){
+      const currentLoadedPage = path.substring(path.lastIndexOf("/")+1);
+      console.log("currentLoadedPage  --> ", currentLoadedPage);
+      if(currentLoadedPage){
+        this.setState({currentLoadedPage: currentLoadedPage});
+      }
+    }
+    console.log("SideBarWrapper  --> ", path);
+  }
 
   componentDidMount() {
     const {
@@ -29,30 +37,16 @@ class SideBarWrapper extends React.Component {
     }
   }
 
-  getPageContent = async page => {
-    if(page != this.state.currentLoadedPage){
-      try {
-        console.log("Loaded content for "+page);
-        this.setCurrentState({firstPageLoaded: true, currentLoadedPage: page});
-        await this.props.actions.getPageContent(this.props.pageType, page);
-        toast.success(page + "Page Loaded");
-      } catch (error) {
-        toast.error(page + "could not be loaded for " + this.props.pageType +
-          " section" + error.message, {
-            autoClose: false
-          });
-      }
-    }else{
-      console.log("Content for "+page+" page is already loaded");
-    }
-  };
+  setCurrentState(newState){
+    this.setState(newState);
+  }
 
   sideBarToggled = () => {
     this.setCurrentState({sideBarVisible: !this.state.sideBarVisible});
-  }
+  };
 
-  setCurrentState(newState){
-    this.setState(newState);
+  getPageContent = (page)=> {
+    this.setCurrentState({currentLoadedPage: page});
   }
 
   render() {
@@ -61,13 +55,19 @@ class SideBarWrapper extends React.Component {
         this.props.loading ? ( <
           Spinner / >
         ) : (
-          <div className="wrapper">
+          <div className="sideBarwrapper">
             { this.props.sideNav && <SideBar sideNav = { this.props.sideNav}
               sideBarVisible={this.state.sideBarVisible}
-              onPageChange = {this.getPageContent} firstPageLoaded={this.state.firstPageLoaded}/>
+              onPageChange = {this.getPageContent}
+              parentRouteUrl={this.props.parentRouteUrl}
+              currentLoadedPage = {this.state.currentLoadedPage}/>
             }
-            {this.props.pageContent && <MainContent pageContent = { this.props.pageContent}
-                colapseLinkClicked = {this.sideBarToggled}/>}
+            <Route path={this.props.parentRouteUrl+"/:id"}>
+              <MainContent colapseLinkClicked = {this.sideBarToggled}
+                  parentRouteUrl={this.props.parentRouteUrl}
+                  parentPage ={this.props.pageType}
+                  currentLoadedPage = {this.state.currentLoadedPage}/>
+            </Route>
           </div>
         )
       }
@@ -79,15 +79,14 @@ class SideBarWrapper extends React.Component {
 SideBarWrapper.propTypes = {
   pageType: PropTypes.string.isRequired,
   sideNav: PropTypes.object.isRequired,
-  pageContent: PropTypes.object.isRequired,
-  loading: PropTypes.bool.isRequired,
   actions: PropTypes.object.isRequired,
+  parentRouteUrl:PropTypes.string,
+  loading: PropTypes.bool.isRequired,
 };
 
 function mapStateToProps(state) {
   return {
     sideNav: state.currentPage.sideNav,
-    pageContent: state.currentPage.pageContent,
     loading: state.apiCallsInProgress > 0
   };
 }
@@ -96,7 +95,6 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: {
       getSideNav: bindActionCreators(pageDetailAction.getSideNav, dispatch),
-      getPageContent: bindActionCreators(pageDetailAction.getPageContent, dispatch)
     }
   };
 }
