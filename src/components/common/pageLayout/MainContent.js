@@ -57,7 +57,7 @@ class MainContent extends React.Component {
             <button type="button" id="sidebarCollapse" className="btn btn-info mb-2 mt-1"
                 onClick={() => this.props.colapseLinkClicked()}>
                 <i className="fas fa-align-left"></i>
-                <span>{"/" +this.props.parentPage +"/" +this.props.currentLoadedPage}</span>
+                <span>{"/" +this.props.parentRouteUrl +"/" +this.props.currentLoadedPage}</span>
             </button>
             <h3>{this.props.pageContent.heading}</h3>
             {this.props.pageContent.dataList && this.props.pageContent.dataList.map((content, index) => {

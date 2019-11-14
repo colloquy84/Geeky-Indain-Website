@@ -6,17 +6,10 @@ import SideBarLink from "./SideBarLink";
 class SideBar extends React.Component {
   state = {};
 
-  componentDidMount() {
-    const {
-      sideNav,
-      currentLoadedPage
-    } = this.props;
-
-    if (currentLoadedPage == '' && sideNav !=null && sideNav.links && sideNav.links.length != 0) {
-      this.props.onPageChange(sideNav.links[0].page);
-    }else if(currentLoadedPage != ''){
-      this.props.onPageChange(currentLoadedPage);
-    }
+  onLinkChange = (currentLoadedPage, parentRouteUrl, newPage)=> {
+      console.log("SideBar -> currentLoadedPage:"+currentLoadedPage+", newPage: "+newPage
+            +", parentRouteUrl"+parentRouteUrl);
+      this.props.onLinkChange(currentLoadedPage, parentRouteUrl, newPage);
   }
 
   render() {
@@ -34,7 +27,7 @@ class SideBar extends React.Component {
         this.props.sideNav.links.map(link => {
           return (
                 <SideBarLink link={link} key={link.key} parentRouteUrl={this.props.parentRouteUrl}
-                      onLinkSelected={() => this.props.onPageChange(link.page)}
+                      parentLinkChangeHandler={this.onLinkChange}
                       currentLoadedPage = {this.props.currentLoadedPage}/>
           );
         })
@@ -50,7 +43,7 @@ SideBar.propTypes = {
   sideBarVisible:PropTypes.bool.isRequired,
   sideNav: PropTypes.object.isRequired,
   parentRouteUrl: PropTypes.string.isRequired,
-  onPageChange: PropTypes.func.isRequired
+  onLinkChange: PropTypes.func.isRequired
 };
 
 export default SideBar;

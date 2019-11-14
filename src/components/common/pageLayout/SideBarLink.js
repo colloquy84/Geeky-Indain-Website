@@ -3,37 +3,58 @@ import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 
 
-const SideBarLink = ({ link, onLinkSelected, parentRouteUrl, currentLoadedPage}) => (
-  <>
-    {link && link.subLinks && link.subLinks.length !=0 ?
-      (
-          <li key={link.key}
-            href={"#"+link.key+"-ul"} onClick={() => onLinkSelected(link.page)}
-            data-toggle="collapse" aria-expanded="false" className="dropdown-toggle collapsed">
-              <NavLink to={parentRouteUrl+"/"+link.page}> {link.name}</NavLink>
-            <ul className="collapse list-unstyled" id={link.key+"-ul"}>
-              {link.subLinks.map(subLink => {
-                  return <SideBarLink link={subLink} onLinkSelected={onLinkSelected} key={subLink.key}
-                            parentRouteUrl={parentRouteUrl +"/"+subLink.page}
-                            currentLoadedPage={currentLoadedPage}/>;
-                })
-              }
-            </ul>
-        </li>
-      ):
-      (
-        <li>
-          <NavLink key={link.key} to={parentRouteUrl+"/"+link.page}
-             onClick={() => onLinkSelected(link.page)}>{link.name}</NavLink>
-        </li>
-      )
+class SideBarLink extends React.Component {
+  state = {};
+
+  onLinkClick = (newPage)=> {
+    if(newPage != this.props.currentLoadedPage){
+      console.log("SideBarLink -> currentLoadedPage:"+this.props.currentLoadedPage+", newPage: "+newPage
+            +", parentRouteUrl"+this.props.parentRouteUrl);
+      this.props.parentLinkChangeHandler(this.props.currentLoadedPage, this.props.parentRouteUrl, newPage);
+    }else{
+      console.log("SideBarLink -> current loaded page is same currentLoadedPage:"+this.props.currentLoadedPage
+        +", newPage: "+newPage);
     }
-  </>
-);
+  }
+
+  render() {
+    const { link, parentLinkChangeHandler, parentRouteUrl, currentLoadedPage} = this.props;
+    return (
+      <>
+        {link && link.subLinks && link.subLinks.length !=0 ?
+          (
+              <li key={link.key}>
+                  <NavLink to={parentRouteUrl+"/"+link.page} onClick={() => this.onLinkClick(link.page)}
+                      className={currentLoadedPage == link.page?"active navLink":"navLink"}>
+                      {link.name}</NavLink>
+                  <a href={"#"+link.key+"-ul"}
+                      data-toggle="collapse" aria-expanded="false" className="dropdown-toggle collapsed"/>
+                <ul className="collapse list-unstyled" id={link.key+"-ul"}>
+                  {link.subLinks.map(subLink => {
+                      return <SideBarLink link={subLink} parentLinkChangeHandler={parentLinkChangeHandler} key={subLink.key}
+                                parentRouteUrl={parentRouteUrl +"/"+link.page}
+                                currentLoadedPage={currentLoadedPage}/>;
+                    })
+                  }
+                </ul>
+            </li>
+          ):
+          (
+            <li>
+              <NavLink key={link.key} to={parentRouteUrl+"/"+link.page}
+                  className={currentLoadedPage == link.page?"active navLink":"navLink"}
+                 onClick={() => this.onLinkClick(link.page)}>{link.name}</NavLink>
+            </li>
+          )
+        }
+      </>
+    );
+  }
+}
 
 SideBarLink.propTypes = {
   link: PropTypes.object.isRequired,
-  onLinkSelected: PropTypes.func.isRequired,
+  parentLinkChangeHandler: PropTypes.func.isRequired,
   parentRouteUrl: PropTypes.string.isRequired,
   currentLoadedPage: PropTypes.string.isRequired
 };

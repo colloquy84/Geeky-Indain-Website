@@ -11,18 +11,37 @@ import MainContent from "./MainContent";
 import Spinner from "../Spinner";
 
 class SideBarWrapper extends React.Component {
-  state = {firstPageLoaded: false, sideBarVisible : false, currentLoadedPage : ''};
+  state = {firstPageLoaded: false, sideBarVisible : false, currentLoadedPage : '', parentRouteUrl:''};
 
   componentWillReceiveProps(newProps){
     const path = location.pathname;
+    console.log("SideBarWrapper -> path: "+path);
     if(path && path.indexOf("/") >= 0 && path.indexOf("/") != path.lastIndexOf("/")){
-      const currentLoadedPage = path.substring(path.lastIndexOf("/")+1);
-      console.log("currentLoadedPage  --> ", currentLoadedPage);
-      if(currentLoadedPage){
-        this.setState({currentLoadedPage: currentLoadedPage});
+      console.log("SideBarWrapper -> loading from url path");
+      this.loadContentFromParentUrlOrRoutePage(path,
+          path.substring(0,path.lastIndexOf("/")));
+    }else{
+      const sideNav = newProps.sideNav;
+      console.log("SideBarWrapper -> loading from sidenav props", sideNav);
+      if(sideNav && sideNav.links && sideNav.links.length >0 ){
+        this.loadContentFromParentUrlOrRoutePage(sideNav.links[0].page, this.props.parentRouteUrl);
       }
     }
-    console.log("SideBarWrapper  --> ", path);
+  }
+
+  loadContentFromParentUrlOrRoutePage(urlOrRoute, parentRouteUrl){
+    if(urlOrRoute && urlOrRoute.lastIndexOf("/") >= 0 ){
+      const newCurrentLoadedPage = urlOrRoute.substring(urlOrRoute.lastIndexOf("/")+1);
+      if(newCurrentLoadedPage){
+          console.log("SideBarWrapper -> currentLoadedPage: "+ this.state.currentLoadedPage+
+          ", newCurrentLoadedPage:"+newCurrentLoadedPage);
+        this.setState({currentLoadedPage: newCurrentLoadedPage, parentRouteUrl:parentRouteUrl});
+      }
+    }else{
+      console.log("SideBarWrapper -> currentLoadedPage: "+ this.state.currentLoadedPage+
+      ", newCurrentLoadedPage:"+urlOrRoute);
+      this.setState({currentLoadedPage: urlOrRoute, parentRouteUrl:parentRouteUrl});
+    }
   }
 
   componentDidMount() {
@@ -37,16 +56,14 @@ class SideBarWrapper extends React.Component {
     }
   }
 
-  setCurrentState(newState){
-    this.setState(newState);
-  }
-
   sideBarToggled = () => {
-    this.setCurrentState({sideBarVisible: !this.state.sideBarVisible});
+    this.setState({sideBarVisible: !this.state.sideBarVisible});
   };
 
-  getPageContent = (page)=> {
-    this.setCurrentState({currentLoadedPage: page});
+  onLinkChange = (currentLoadedPage, parentRouteUrl, newPage)=> {
+      console.log("SideBarWrapper -> currentLoadedPage:"+currentLoadedPage+", newPage: "+newPage
+            +", parentRouteUrl"+parentRouteUrl);
+      this.setState({currentLoadedPage: newPage,parentRouteUrl:parentRouteUrl});
   }
 
   render() {
@@ -58,13 +75,13 @@ class SideBarWrapper extends React.Component {
           <div className="sideBarwrapper">
             { this.props.sideNav && <SideBar sideNav = { this.props.sideNav}
               sideBarVisible={this.state.sideBarVisible}
-              onPageChange = {this.getPageContent}
+              onLinkChange = {this.onLinkChange}
               parentRouteUrl={this.props.parentRouteUrl}
               currentLoadedPage = {this.state.currentLoadedPage}/>
             }
             <Route path={this.props.parentRouteUrl+"/:id"}>
               <MainContent colapseLinkClicked = {this.sideBarToggled}
-                  parentRouteUrl={this.props.parentRouteUrl}
+                  parentRouteUrl={this.state.parentRouteUrl}
                   parentPage ={this.props.pageType}
                   currentLoadedPage = {this.state.currentLoadedPage}/>
             </Route>

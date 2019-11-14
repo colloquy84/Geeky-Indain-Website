@@ -60,77 +60,76 @@
 
 #sidebar ul p {
     color: #666;
-    padding: 10px;
+    padding: 20px;
     background: #eee;
     font-weight: 500;
+    margin-bottom: 0;
 }
 
 #sidebar ul li{
   background:#f7f7f7;
+  position: relative;
 
 }
 
-#sidebar ul li a {
-    padding: 10px;
+#sidebar ul li a{
+    padding: 20px;
     font-size: 1.1em;
     display: block;
 }
 
-#sidebar ul li a:hover {
-    color: #f7f7f7;
-    background: #5f6f81;
+#sidebar ul li a.dropdown-toggle{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
 }
 
-#sidebar > li[aria-expanded="true"]  > a{
-  color: #999;
+#sidebar ul li a:hover,
+#sidebar ul li a:hover + a.dropdown-toggle,
+#sidebar ul li a:hover + a.dropdown-toggle::after {
+  color: #f7f7f7;
+  background: #5f6f81;
 }
 
-#sidebar >  ul li > a.active,
-#sidebar > li[aria-expanded="true"] {
-    color: #f7f7f7;
-    background: #5f6f81;
+#sidebar ul li a.active,
+#sidebar ul li a.active + a.dropdown-toggle,
+#sidebar ul li a.active + a.dropdown-toggle::after {
+  color: #f7f7f7;
+  background: #4e5e71;
+  font-weight: 500;
 }
 
-
-a[data-toggle="collapse"] {
-    position: relative;
+#sidebar ul li a.dropdown-toggle::after {
+  content: "";
+  display: inline-block;
+  margin-left: .255em;
+  vertical-align: .255em;
+  border-top: .3em solid transparent;
+  border-right: 0;
+  border-bottom: .3em solid transparent;
+  border-left: .3em solid ;
+  transition: easing 0.3s;
 }
 
-.dropdown-toggle::after {
-    display: block;
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
+#sidebar ul li a.dropdown-toggle.collapsed::after {
+  border-top: .3em solid ;
+  border-right: .3em solid transparent;
+  border-bottom: 0;
+  border-left: .3em solid transparent;
+  transition: easing 0.3s;
 }
 
-ul > ul a {
-    font-size: 0.9em !important;
+#sidebar ul  ul  a {
+    font-size: 0.95em !important;
     padding-left: 30px !important;
     background: #f7f7f7;
 }
 
-ul.CTAs {
-    padding: 20px;
-}
-
-ul.CTAs a {
-    text-align: center;
+#sidebar ul  ul  ul a {
     font-size: 0.9em !important;
-    display: block;
-    border-radius: 5px;
-    margin-bottom: 5px;
-}
-
-a.download {
+    padding-left: 35px !important;
     background: #f7f7f7;
-    color: #999;
-}
-
-a.article,
-a.article:hover {
-    background: #f7f7f7 !important;
-    color: #999 !important;
 }
 
 /* ---------------------------------------------------
