@@ -12,22 +12,22 @@ class MainContent extends React.Component {
 
   componentDidMount() {
     // if(newProps.currentLoadedPage != this.props.currentLoadedPage){
-      this.getPageContent(this.props.currentLoadedPage).catch(error => {
-        alert("Loading "+this.props.currentLoadedPage+" page failed" + error);
+      this.getPageContent(this.props.currentLoadedPage.page).catch(error => {
+        alert("Loading "+this.props.currentLoadedPage.page+" page failed" + error);
       });
     // }
   }
 
   componentWillReceiveProps(newProps) {
-    if(newProps.currentLoadedPage != this.props.currentLoadedPage){
-      this.getPageContent(newProps.currentLoadedPage).catch(error => {
-        alert("Loading "+newProps.currentLoadedPage+" page failed" + error);
+    if(newProps.currentLoadedPage.page != this.props.currentLoadedPage.page){
+      this.getPageContent(newProps.currentLoadedPage.page).catch(error => {
+        alert("Loading "+newProps.currentLoadedPage.page+" page failed" + error);
       });
     }
   }
 
   getPageContent = async page => {
-    if(page != this.state.currentLoadedPage){
+    if(page && page != this.state.currentLoadedPage){
       try {
         console.log("Loaded content for "+page);
         this.setCurrentState({currentLoadedPage: page});
@@ -60,7 +60,7 @@ class MainContent extends React.Component {
                 <i className="fas fa-bars"></i>
                 </a>
                 {this.props.parentPages && this.props.parentPages.map((page) => {
-                  return <span key={page.key}>{page.name+"-"+page.page +"/"} </span>
+                  return <span key={page.key}>{"  [Name: "+page.shortName+", Link:"+page.page +"]/"} </span>
                 })
               }
             </div>
@@ -79,7 +79,7 @@ class MainContent extends React.Component {
 
 MainContent.propTypes = {
   parentPage: PropTypes.string.isRequired,
-  currentLoadedPage: PropTypes.string.isRequired,
+  currentLoadedPage: PropTypes.object,
   colapseLinkClicked: PropTypes.func.isRequired,
   parentPages: PropTypes.array,
   pageContent: PropTypes.object.isRequired,

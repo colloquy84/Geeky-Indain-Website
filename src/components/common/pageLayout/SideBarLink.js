@@ -28,7 +28,7 @@ class SideBarLink extends React.Component {
 
   getParentPages(link){
     const parentPages = this.props.parentPages.slice();
-    parentPages.push({key:link.page, page:link.page, name:link.name})
+    parentPages.push({key:link.page, page:link.page, name:link.name,shortName:link.shortName})
     return parentPages;
   }
 
@@ -39,8 +39,8 @@ class SideBarLink extends React.Component {
         {link && link.subLinks && link.subLinks.length !=0 && parentPages?
           (
               <li key={link.key}>
-                  <NavLink to={this.getParentRouteURL()+link.page} onClick={() => this.onLinkClick(link.page)}
-                      className={currentLoadedPage == link.page?"activeLink borderedLink":"borderedLink"}>
+                  <NavLink to={this.getParentRouteURL()+link.page} onClick={() => this.onLinkClick(link)}
+                      className={currentLoadedPage.page == link.page?"activeLink borderedLink":"borderedLink"}>
                       <i className={link.iconClass}/>{link.name}
                   </NavLink>
                   <a href={"#"+link.key+"-ul"}
@@ -61,8 +61,8 @@ class SideBarLink extends React.Component {
             <li>
                 {parentPages &&
                   <NavLink key={link.key} to={this.getParentRouteURL()+link.page}
-                      className={currentLoadedPage == link.page?"activeLink  borderedLink":" borderedLink"}
-                     onClick={() => this.onLinkClick(link.page)}><i className=
+                      className={currentLoadedPage.page == link.page?"activeLink  borderedLink":" borderedLink"}
+                     onClick={() => this.onLinkClick(link)}><i className=
                      {link.iconClass}/>{link.name}
                   </NavLink>
                 }
@@ -78,7 +78,7 @@ SideBarLink.propTypes = {
   link: PropTypes.object.isRequired,
   parentLinkChangeHandler: PropTypes.func.isRequired,
   parentPages: PropTypes.array,
-  currentLoadedPage: PropTypes.string.isRequired
+  currentLoadedPage: PropTypes.object.isRequired
 };
 
 export default SideBarLink;

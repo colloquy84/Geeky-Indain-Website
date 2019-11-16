@@ -39,7 +39,7 @@ class SideBar extends React.Component {
 }
 
 SideBar.propTypes = {
-  currentLoadedPage: PropTypes.string.isRequired,
+  currentLoadedPage: PropTypes.object,
   hideSideBar:PropTypes.bool.isRequired,
   sideNav: PropTypes.object.isRequired,
   parentPages: PropTypes.array,

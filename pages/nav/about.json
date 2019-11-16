@@ -1,19 +1,23 @@
 {
   "title":"About Page",
   "mainPage":"aboutMain",
+  "shortName":"About",
   "links": [{
       "key":"link1",
       "name": "Dropdown Link 1",
+      "shortName":"Link 1",
       "page": "link1",
       "iconClass":"fab fa-java",
       "subLinks": [{
           "key":"link11",
           "name": "Link 1.1",
+          "shortName":"Link 1.1",
           "page": "link11"
         },
         {
           "key":"link12",
           "name": "Link 1.2",
+          "shortName":"Link 1.2",
           "page": "link12"
         }
       ]
@@ -21,25 +25,30 @@
     {
       "key":"link2",
       "name": "Dropdown Link 2",
+      "shortName":"Link 2",
       "page": "link2",
       "iconClass":"fas fa-users",
       "subLinks": [{
           "key":"link21",
           "name": "Link  2.1",
+          "shortName":"Link 2.1",
           "page": "link21"
         },
         {
           "key":"link22",
-          "name": "Link 2.2",
+          "name": "Dropdown Link 2.2",
+          "shortName":"Link 2.2",
           "page": "link22",
           "subLinks": [{
             "key":"link221",
               "name": "Link 2.2.1",
+              "shortName":"Link 2.2.1",
               "page": "link221"
             },
             {
               "key":"link222",
               "name": "Link 2.2.2",
+              "shortName":"Link 2.2.2",
               "page": "link222"
             }
           ]
@@ -49,6 +58,7 @@
     {
       "key":"link3",
       "name": "Link with no Dropdown",
+      "shortName":"No Drop Down Link",
       "page": "link3",
       "iconClass":"fas fa-users"
     }
