@@ -6,10 +6,10 @@ import SideBarLink from "./SideBarLink";
 class SideBar extends React.Component {
   state = {};
 
-  onLinkChange = (currentLoadedPage, parentRouteUrl, newPage)=> {
+  onLinkChange = (currentLoadedPage, parentPages, newPage)=> {
       console.log("SideBar -> currentLoadedPage:"+currentLoadedPage+", newPage: "+newPage
-            +", parentRouteUrl"+parentRouteUrl);
-      this.props.onLinkChange(currentLoadedPage, parentRouteUrl, newPage);
+            +", parentPages", parentPages);
+      this.props.onLinkChange(currentLoadedPage, parentPages, newPage);
   }
 
   render() {
@@ -26,7 +26,7 @@ class SideBar extends React.Component {
       {this.props.sideNav && this.props.sideNav.links &&
         this.props.sideNav.links.map(link => {
           return (
-                <SideBarLink link={link} key={link.key} parentRouteUrl={this.props.parentRouteUrl}
+                <SideBarLink link={link} key={link.key} parentPages={this.props.parentPages}
                       parentLinkChangeHandler={this.onLinkChange}
                       currentLoadedPage = {this.props.currentLoadedPage}/>
           );
@@ -42,7 +42,7 @@ SideBar.propTypes = {
   currentLoadedPage: PropTypes.string.isRequired,
   hideSideBar:PropTypes.bool.isRequired,
   sideNav: PropTypes.object.isRequired,
-  parentRouteUrl: PropTypes.string.isRequired,
+  parentPages: PropTypes.array,
   onLinkChange: PropTypes.func.isRequired
 };
 

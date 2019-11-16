@@ -59,7 +59,10 @@ class MainContent extends React.Component {
               <a className="sidebarToggler" onClick={() => this.props.colapseLinkClicked()}>
                 <i className="fas fa-bars"></i>
                 </a>
-                <span>{"/" +this.props.parentRouteUrl +"/" +this.props.currentLoadedPage}</span>
+                {this.props.parentPages && this.props.parentPages.map((page) => {
+                  return <span key={page.key}>{page.name+"-"+page.page +"/"} </span>
+                })
+              }
             </div>
             <h3>{this.props.pageContent.heading}</h3>
             {this.props.pageContent.dataList && this.props.pageContent.dataList.map((content, index) => {
@@ -78,7 +81,7 @@ MainContent.propTypes = {
   parentPage: PropTypes.string.isRequired,
   currentLoadedPage: PropTypes.string.isRequired,
   colapseLinkClicked: PropTypes.func.isRequired,
-  parentRouteUrl: PropTypes.string.isRequired,
+  parentPages: PropTypes.array,
   pageContent: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired,
   actions: PropTypes.object.isRequired,

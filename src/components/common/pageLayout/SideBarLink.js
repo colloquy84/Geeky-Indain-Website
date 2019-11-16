@@ -9,32 +9,48 @@ class SideBarLink extends React.Component {
   onLinkClick = (newPage)=> {
     if(newPage != this.props.currentLoadedPage){
       console.log("SideBarLink -> currentLoadedPage:"+this.props.currentLoadedPage+", newPage: "+newPage
-            +", parentRouteUrl"+this.props.parentRouteUrl);
-      this.props.parentLinkChangeHandler(this.props.currentLoadedPage, this.props.parentRouteUrl, newPage);
+            +", parentPages"+this.props.parentPages);
+      this.props.parentLinkChangeHandler(this.props.currentLoadedPage, this.props.parentPages, newPage);
     }else{
       console.log("SideBarLink -> current loaded page is same currentLoadedPage:"+this.props.currentLoadedPage
         +", newPage: "+newPage);
     }
   }
 
+  getParentRouteURL(){
+    const {parentPages} = this.props;
+    let parentRouteURL = ""
+    for(let index=0; index < parentPages.length; index++){
+      parentRouteURL = parentRouteURL+ parentPages[index].page +"/";
+    }
+    return parentRouteURL;
+  }
+
+  getParentPages(link){
+    const parentPages = this.props.parentPages.slice();
+    parentPages.push({key:link.page, page:link.page, name:link.name})
+    return parentPages;
+  }
+
   render() {
-    const { link, parentLinkChangeHandler, parentRouteUrl, currentLoadedPage} = this.props;
+    const { link, parentLinkChangeHandler, currentLoadedPage, parentPages} = this.props;
     return (
       <>
-        {link && link.subLinks && link.subLinks.length !=0 ?
+        {link && link.subLinks && link.subLinks.length !=0 && parentPages?
           (
               <li key={link.key}>
-                  <NavLink to={parentRouteUrl+"/"+link.page} onClick={() => this.onLinkClick(link.page)}
+                  <NavLink to={this.getParentRouteURL()+link.page} onClick={() => this.onLinkClick(link.page)}
                       className={currentLoadedPage == link.page?"activeLink borderedLink":"borderedLink"}>
                       <i className={link.iconClass}/>{link.name}
                   </NavLink>
                   <a href={"#"+link.key+"-ul"}
-                      data-toggle="collapse" aria-expanded="false" className="preDropDownAnchor dropdown-toggle collapsed">
+                      data-toggle="collapse" aria-expanded="false"
+                      className="preDropDownAnchor dropdown-toggle collapsed">
                   </a>
                 <ul className="collapse list-unstyled" id={link.key+"-ul"}>
                   {link.subLinks.map(subLink => {
                       return <SideBarLink link={subLink} parentLinkChangeHandler={parentLinkChangeHandler} key={subLink.key}
-                                parentRouteUrl={parentRouteUrl +"/"+link.page}
+                                parentPages={this.getParentPages(link)}
                                 currentLoadedPage={currentLoadedPage}/>;
                     })
                   }
@@ -43,12 +59,14 @@ class SideBarLink extends React.Component {
           ):
           (
             <li>
-              <NavLink key={link.key} to={parentRouteUrl+"/"+link.page}
-                  className={currentLoadedPage == link.page?"activeLink  borderedLink":" borderedLink"}
-                 onClick={() => this.onLinkClick(link.page)}><i className=
-                 {link.iconClass}/>{link.name}
-              </NavLink>
-            </li>
+                {parentPages &&
+                  <NavLink key={link.key} to={this.getParentRouteURL()+link.page}
+                      className={currentLoadedPage == link.page?"activeLink  borderedLink":" borderedLink"}
+                     onClick={() => this.onLinkClick(link.page)}><i className=
+                     {link.iconClass}/>{link.name}
+                  </NavLink>
+                }
+              </li>
           )
         }
       </>
@@ -59,7 +77,7 @@ class SideBarLink extends React.Component {
 SideBarLink.propTypes = {
   link: PropTypes.object.isRequired,
   parentLinkChangeHandler: PropTypes.func.isRequired,
-  parentRouteUrl: PropTypes.string.isRequired,
+  parentPages: PropTypes.array,
   currentLoadedPage: PropTypes.string.isRequired
 };
 
