@@ -11,10 +11,11 @@ import MainContent from "./MainContent";
 import Spinner from "../Spinner";
 
 class SideBarWrapper extends React.Component {
-  state = {firstPageLoaded: false, sideBarVisible : false, currentLoadedPage : '', parentRouteUrl:''};
+  state = {firstPageLoaded: false, hideSideBar : false, currentLoadedPage : '', parentRouteUrl:''};
 
   componentWillReceiveProps(newProps){
     const path = location.pathname;
+    console.log("location: ", location);
     console.log("SideBarWrapper -> path: "+path);
     if(path && path.indexOf("/") >= 0 && path.indexOf("/") != path.lastIndexOf("/")){
       console.log("SideBarWrapper -> loading from url path");
@@ -24,7 +25,7 @@ class SideBarWrapper extends React.Component {
       const sideNav = newProps.sideNav;
       console.log("SideBarWrapper -> loading from sidenav props", sideNav);
       if(sideNav && sideNav.links && sideNav.links.length >0 ){
-        this.loadContentFromParentUrlOrRoutePage(sideNav.links[0].page, this.props.parentRouteUrl);
+        this.loadContentFromParentUrlOrRoutePage(sideNav.mainPage, this.props.parentRouteUrl);
       }
     }
   }
@@ -57,7 +58,7 @@ class SideBarWrapper extends React.Component {
   }
 
   sideBarToggled = () => {
-    this.setState({sideBarVisible: !this.state.sideBarVisible});
+    this.setState({hideSideBar: !this.state.hideSideBar});
   };
 
   onLinkChange = (currentLoadedPage, parentRouteUrl, newPage)=> {
@@ -74,7 +75,7 @@ class SideBarWrapper extends React.Component {
         ) : (
           <div className="sideBarwrapper">
             { this.props.sideNav && <SideBar sideNav = { this.props.sideNav}
-              sideBarVisible={this.state.sideBarVisible}
+              hideSideBar={this.state.hideSideBar}
               onLinkChange = {this.onLinkChange}
               parentRouteUrl={this.props.parentRouteUrl}
               currentLoadedPage = {this.state.currentLoadedPage}/>

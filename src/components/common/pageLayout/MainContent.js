@@ -5,6 +5,7 @@ import * as pageDetailAction from "../../../redux/actions/pageDetailAction";
 import { bindActionCreators} from "redux";
 import { toast } from "react-toastify";
 import Spinner from "../Spinner";
+import "./mainContent.css";
 
 class MainContent extends React.Component {
   state = {currentLoadedPage:''};
@@ -54,11 +55,12 @@ class MainContent extends React.Component {
           <Spinner / >
         ) : (
           <>
-            <button type="button" id="sidebarCollapse" className="btn btn-info mb-2 mt-1"
-                onClick={() => this.props.colapseLinkClicked()}>
-                <i className="fas fa-align-left"></i>
+            <div className="mainContentHeader">
+              <a className="sidebarToggler" onClick={() => this.props.colapseLinkClicked()}>
+                <i className="fas fa-bars"></i>
+                </a>
                 <span>{"/" +this.props.parentRouteUrl +"/" +this.props.currentLoadedPage}</span>
-            </button>
+            </div>
             <h3>{this.props.pageContent.heading}</h3>
             {this.props.pageContent.dataList && this.props.pageContent.dataList.map((content, index) => {
               return (

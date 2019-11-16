@@ -25,10 +25,12 @@ class SideBarLink extends React.Component {
           (
               <li key={link.key}>
                   <NavLink to={parentRouteUrl+"/"+link.page} onClick={() => this.onLinkClick(link.page)}
-                      className={currentLoadedPage == link.page?"active navLink":"navLink"}>
-                      {link.name}</NavLink>
+                      className={currentLoadedPage == link.page?"activeLink borderedLink":"borderedLink"}>
+                      <i className={link.iconClass}/>{link.name}
+                  </NavLink>
                   <a href={"#"+link.key+"-ul"}
-                      data-toggle="collapse" aria-expanded="false" className="dropdown-toggle collapsed"/>
+                      data-toggle="collapse" aria-expanded="false" className="preDropDownAnchor dropdown-toggle collapsed">
+                  </a>
                 <ul className="collapse list-unstyled" id={link.key+"-ul"}>
                   {link.subLinks.map(subLink => {
                       return <SideBarLink link={subLink} parentLinkChangeHandler={parentLinkChangeHandler} key={subLink.key}
@@ -42,8 +44,10 @@ class SideBarLink extends React.Component {
           (
             <li>
               <NavLink key={link.key} to={parentRouteUrl+"/"+link.page}
-                  className={currentLoadedPage == link.page?"active navLink":"navLink"}
-                 onClick={() => this.onLinkClick(link.page)}>{link.name}</NavLink>
+                  className={currentLoadedPage == link.page?"activeLink  borderedLink":" borderedLink"}
+                 onClick={() => this.onLinkClick(link.page)}><i className=
+                 {link.iconClass}/>{link.name}
+              </NavLink>
             </li>
           )
         }

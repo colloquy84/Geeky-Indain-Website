@@ -1,5 +1,5 @@
-import { handleResponse, handleError } from "./apiUtils";
-const baseUrl = process.env.API_URL + "/pages/";
+import { handleResponse, handleError, getBaseURL } from "./apiUtils";
+const baseUrl = getBaseURL() + "/pages/";
 const DATA_SUFFIX = '.json';
 
 export function getSideNavDetails(page) {

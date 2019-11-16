@@ -14,7 +14,7 @@ class SideBar extends React.Component {
 
   render() {
     return (
-      <nav id="sidebar" className={this.props.sideBarVisible?'active':''}>
+      <nav id="sidebar" className={this.props.hideSideBar?'active':''}>
           <div className="sidebar-header">
               <a className="navbar-brand geeky-navbar-brand" href="/">
                 <img src={require('../../../../assets/Logo/Inline/ICON_ONLY_TransparentBg_RECT.png')}
@@ -40,7 +40,7 @@ class SideBar extends React.Component {
 
 SideBar.propTypes = {
   currentLoadedPage: PropTypes.string.isRequired,
-  sideBarVisible:PropTypes.bool.isRequired,
+  hideSideBar:PropTypes.bool.isRequired,
   sideNav: PropTypes.object.isRequired,
   parentRouteUrl: PropTypes.string.isRequired,
   onLinkChange: PropTypes.func.isRequired
