@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { NavLink } from "react-router-dom";
 import "./breadCrumb.css";
 
 class BreadCrumb extends React.Component {
@@ -21,8 +22,9 @@ class BreadCrumb extends React.Component {
     }
   }
 
-  onBreadCrumbLinkClick(newLink){
-    this.props.onBreadCrumbLinkClick(newLink);
+  onBreadCrumbLinkClick(index){
+    const {propLinks} = this.state;
+    this.props.onBreadCrumbLinkClick(propLinks[index]);
   }
 
   notLastLink(link){
@@ -38,12 +40,12 @@ class BreadCrumb extends React.Component {
         <ol className="breadcrumb">
           <li className="breadcrumb-item"><a href="/"><i className="fa fa-home"/></a></li>
           {links && links.length >0
-             && links.map(link =>
+             && links.map((link, index) =>
                {
                   return  <li key={link.page} className="breadcrumb-item">
                             {this.notLastLink(link)?
-                              <a  href={link.page} >
-                              {link.shortName}</a>
+                              <NavLink  to={link.page} onClick={() => this.onBreadCrumbLinkClick(index)}>
+                              {link.shortName}</NavLink>
                             :
                               <span>{link.shortName}</span>
                             }
