@@ -4,46 +4,44 @@ import { NavLink } from "react-router-dom";
 import "./breadCrumb.css";
 
 class BreadCrumb extends React.Component {
-  state = {links:[]};
+  state = {};
 
-  componentWillReceiveProps(newProps){
-    const {links} = newProps;
+  getLinksForBreadCrumb(links){
+    const linksForBreadCrumb = [];
     if(links && links.length >0){
-      const stateLinks = [];
       for(let index =0; index < links.length; index++){
         const link =links[index];
         if(index == 0){
-          stateLinks.push({page:link.page, shortName:link.shortName})
+          linksForBreadCrumb.push({page:link.page, shortName:link.shortName, originalPageLink:link.page})
         }else{
-          stateLinks.push({page:stateLinks[index -1].page+"/"+link.page, shortName:link.shortName})
+          linksForBreadCrumb.push({page:linksForBreadCrumb[index -1].page+"/"+link.page,
+                shortName:link.shortName, originalPageLink:link.page})
         }
       }
-      this.setState({links:stateLinks})
     }
+    return linksForBreadCrumb;
   }
 
-  onBreadCrumbLinkClick(index){
-    const {propLinks} = this.state;
-    this.props.onBreadCrumbLinkClick(propLinks[index]);
+  onBreadCrumbLinkClick = (index) =>{
+    const {links} = this.props;
+    this.props.onBreadCrumbLinkClick(links, links[index]);
   }
 
-  notLastLink(link){
-    const {links} = this.state;
-    return link.page != links[links.length - 1].page
+  notLastLink(link, links){
+    return link.originalPageLink != links[links.length - 1].page
   }
 
   render(){
-    const {links} = this.state;
     return (
       <div id="breadCrumb">
       <nav aria-label="breadcrumb">
         <ol className="breadcrumb">
           <li className="breadcrumb-item"><a href="/"><i className="fa fa-home"/></a></li>
-          {links && links.length >0
-             && links.map((link, index) =>
+          {this.props.links && this.props.links.length >0
+             && this.getLinksForBreadCrumb(this.props.links).map((link, index) =>
                {
                   return  <li key={link.page} className="breadcrumb-item">
-                            {this.notLastLink(link)?
+                            {this.notLastLink(link, this.props.links)?
                               <NavLink  to={link.page} onClick={() => this.onBreadCrumbLinkClick(index)}>
                               {link.shortName}</NavLink>
                             :

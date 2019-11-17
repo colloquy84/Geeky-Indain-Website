@@ -5,7 +5,9 @@ import * as pageDetailAction from "../../../redux/actions/pageDetailAction";
 import PropTypes from "prop-types";
 import { bindActionCreators} from "redux";
 import { toast } from "react-toastify";
+import './sideBarWrapper.css';
 import './sideBar.css';
+import BreadCrumb from "../breadCrumb/BreadCrumb";
 
 import SideBar from "./SideBar";
 import MainContent from "./MainContent";
@@ -73,7 +75,7 @@ class SideBarWrapper extends React.Component {
       }else{
         const currentLoadedPage = this.getCurrentLoadedPage(currentPageLink, sideNav.links);
         if(currentLoadedPage == null){
-          window.location = "/404";
+          // window.location = "/404";
         }else{
           return currentLoadedPage;
         }
@@ -138,9 +140,7 @@ class SideBarWrapper extends React.Component {
       this.setState({currentLoadedPage: newPage,parentPagesForBreadCrumb:parentPagesForBreadCrumb});
   }
 
-  onBreadCrumbLinkClick = (currentLoadedPage, parentPagesForBreadCrumb, newPage)=> {
-      console.log("SideBarWrapper -> currentLoadedPage:",currentLoadedPage+", newPage: ",newPage
-            +", parentPages",parentPagesForBreadCrumb);
+  onBreadCrumbLinkClick = (parentPagesForBreadCrumb, newPage)=> {
       const newParentPagesForBreadCrumb = [];
       for(let index =0; index < parentPagesForBreadCrumb.length; index++){
         newParentPagesForBreadCrumb.push(parentPagesForBreadCrumb[index]);
@@ -164,13 +164,22 @@ class SideBarWrapper extends React.Component {
               parentPages={this.state.parentPagesForSideNav}
               currentLoadedPage = {this.state.currentLoadedPage}/>
             }
-            <Route path={this.props.parentRouteUrl+"/:id"}>
-              <MainContent colapseLinkClicked = {this.sideBarToggled}
-                  parentPages={this.state.parentPagesForBreadCrumb}
-                  parentPage ={this.props.pageType}
-                  onBreadCrumbLinkClick = {this.onBreadCrumbLinkClick}
-                  currentLoadedPage = {this.state.currentLoadedPage}/>
-            </Route>
+            <div id="content">
+              <div className="mainContentHeader">
+                <a className="sidebarToggler" onClick={() => this.sideBarToggled()}>
+                  <i className="fas fa-bars"></i>
+                </a>
+                <BreadCrumb links={this.state.parentPagesForBreadCrumb}
+                    onBreadCrumbLinkClick={this.onBreadCrumbLinkClick}/>
+              </div>
+              <Route path={this.props.parentRouteUrl+"/:id"}>
+                <MainContent colapseLinkClicked = {this.sideBarToggled}
+                    parentPages={this.state.parentPagesForBreadCrumb}
+                    parentPage ={this.props.pageType}
+                    onBreadCrumbLinkClick = {this.onBreadCrumbLinkClick}
+                    currentLoadedPage = {this.state.currentLoadedPage}/>
+              </Route>
+            </div>
           </div>
         )
       }

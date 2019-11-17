@@ -1,6 +1,6 @@
 {
   "title":"About Page",
-  "mainPage":"aboutMain",
+  "mainPage":"about",
   "shortName":"About",
   "links": [{
       "key":"link1",

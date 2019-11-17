@@ -1,18 +1,1 @@
-.sidebarToggler{
-    padding: .25rem .75rem;
-    font-size: 1.25rem;
-    line-height: 1;
-    background-color: transparent;
-    border: 1px solid transparent;
-    border-radius: .25rem;
-    cursor: pointer;
-    border-color: rgba(0,0,0,.1);
-  }
 
-  .sidebarToggler:hover{
-    border-color: rgba(0,0,0,.3);
-  }
-
-  .mainContentHeader{
-    margin: 20px 0;
-  }
