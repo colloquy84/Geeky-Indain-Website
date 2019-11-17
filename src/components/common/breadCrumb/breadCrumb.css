@@ -1,0 +1,13 @@
+#breadCrumb{
+  display: inline-block;
+  margin-left: 10px;
+}
+
+#breadCrumb nav,
+#breadCrumb .breadcrumb{
+  padding: 5px 10px 5px 10px !important;
+}
+
+#breadCrumb  ol{
+  margin-bottom: 0 !important;
+}

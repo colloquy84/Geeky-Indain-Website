@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import * as pageDetailAction from "../../../redux/actions/pageDetailAction";
 import { bindActionCreators} from "redux";
 import { toast } from "react-toastify";
+import BreadCrumb from "../breadCrumb/BreadCrumb";
 import Spinner from "../Spinner";
 import "./mainContent.css";
 
@@ -13,7 +14,9 @@ class MainContent extends React.Component {
   componentDidMount() {
     // if(newProps.currentLoadedPage != this.props.currentLoadedPage){
       this.getPageContent(this.props.currentLoadedPage.page).catch(error => {
-        alert("Loading "+this.props.currentLoadedPage.page+" page failed" + error);
+        toast.error("Loading "+this.props.currentLoadedPage.page+" page failed" + error.message,{
+          autoClose:false
+        });
       });
     // }
   }
@@ -21,7 +24,9 @@ class MainContent extends React.Component {
   componentWillReceiveProps(newProps) {
     if(newProps.currentLoadedPage.page != this.props.currentLoadedPage.page){
       this.getPageContent(newProps.currentLoadedPage.page).catch(error => {
-        alert("Loading "+newProps.currentLoadedPage.page+" page failed" + error);
+        toast.error("Loading "+newProps.currentLoadedPage.page+" page failed" + error.message,{
+          autoClose: false
+        });
       });
     }
   }
@@ -44,6 +49,11 @@ class MainContent extends React.Component {
     }
   };
 
+  onBreadCrumbLinkClick = (newPage) =>{
+    this.props.onBreadCrumbLinkClick(this.props.currentLoadedPage,
+        this.props.parentPages, newPage);
+  }
+
   setCurrentState(newState){
     this.setState(newState);
   }
@@ -59,10 +69,8 @@ class MainContent extends React.Component {
               <a className="sidebarToggler" onClick={() => this.props.colapseLinkClicked()}>
                 <i className="fas fa-bars"></i>
                 </a>
-                {this.props.parentPages && this.props.parentPages.map((page) => {
-                  return <span key={page.key}>{"  [Name: "+page.shortName+", Link:"+page.page +"]/"} </span>
-                })
-              }
+                <BreadCrumb links={this.props.parentPages}
+                  onBreadCrumbLinkClick={this.onBreadCrumbLinkClick}/>
             </div>
             <h3>{this.props.pageContent.heading}</h3>
             {this.props.pageContent.dataList && this.props.pageContent.dataList.map((content, index) => {
@@ -85,6 +93,7 @@ MainContent.propTypes = {
   pageContent: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired,
   actions: PropTypes.object.isRequired,
+  onBreadCrumbLinkClick: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {

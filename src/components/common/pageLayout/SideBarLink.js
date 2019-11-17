@@ -6,14 +6,20 @@ import { NavLink } from "react-router-dom";
 class SideBarLink extends React.Component {
   state = {};
 
+constructor(props){
+  super(props);
+  this.isIntialLoad = true;
+}
+
+
   onLinkClick = (newPage)=> {
     if(newPage != this.props.currentLoadedPage){
-      console.log("SideBarLink -> currentLoadedPage:"+this.props.currentLoadedPage+", newPage: "+newPage
+      console.log("SideBarLink -> currentLoadedPage:", this.props.currentLoadedPage+", newPage: "+newPage
             +", parentPages"+this.props.parentPages);
       this.props.parentLinkChangeHandler(this.props.currentLoadedPage, this.props.parentPages, newPage);
     }else{
-      console.log("SideBarLink -> current loaded page is same currentLoadedPage:"+this.props.currentLoadedPage
-        +", newPage: "+newPage);
+      console.log("SideBarLink -> current loaded page is same currentLoadedPage:",this.props.currentLoadedPage
+        +", newPage: ", newPage);
     }
   }
 
@@ -32,6 +38,50 @@ class SideBarLink extends React.Component {
     return parentPages;
   }
 
+
+  isCurrentLoadedPageIsChildrenOfTheseLinks(allLinks, currentPageLink){
+    let currrentPage = null;
+    for(let index =0; index < allLinks.length; index++){
+      if(allLinks[index].page == currentPageLink){
+        currrentPage = allLinks[index];
+        break;
+      }
+      if(allLinks[index].subLinks && allLinks[index].subLinks.length >0){
+        currrentPage = this.isCurrentLoadedPageIsChildrenOfTheseLinks(allLinks[index].subLinks,
+                      currentPageLink);
+        if(currrentPage && currrentPage.page == currentPageLink){
+          break;
+        }
+      }
+    }
+    return currrentPage;
+  }
+
+  isCurrentLoadedPageIsChildrenOfThisLink(link, currentLoadedPage, allComponentLoaded,
+      classesOnSucces, classesOnFailure){
+    // console.log("linkName: "+link.name+", isInitalLoad: "+this.isIntialLoad,
+    //   ", allComponentLoaded: "+allComponentLoaded);
+    let returnedClass= classesOnFailure;
+    if(this.isIntialLoad){
+      if(link.page == currentLoadedPage.page){
+        returnedClass = classesOnSucces;
+      }else{
+          const detailsOfCurrentLoadedPage =
+              this.isCurrentLoadedPageIsChildrenOfTheseLinks(link.subLinks,
+                currentLoadedPage.page);
+          if(detailsOfCurrentLoadedPage != null){
+            returnedClass =  classesOnSucces;
+          }
+      }
+    }
+    if(allComponentLoaded){
+      this.isIntialLoad = false;
+    }
+    // console.log("Returned class: "+returnedClass);
+
+    return returnedClass;
+  }
+
   render() {
     const { link, parentLinkChangeHandler, currentLoadedPage, parentPages} = this.props;
     return (
@@ -45,13 +95,16 @@ class SideBarLink extends React.Component {
                   </NavLink>
                   <a href={"#"+link.key+"-ul"}
                       data-toggle="collapse" aria-expanded="false"
-                      className="preDropDownAnchor dropdown-toggle collapsed">
+                      className={this.isCurrentLoadedPageIsChildrenOfThisLink(link,currentLoadedPage, false,
+                        "preDropDownAnchor dropdown-toggle", "preDropDownAnchor dropdown-toggle collapsed")}>
                   </a>
-                <ul className="collapse list-unstyled" id={link.key+"-ul"}>
+                <ul className={this.isCurrentLoadedPageIsChildrenOfThisLink(link,currentLoadedPage, true,
+                      "collapse list-unstyled show","collapse list-unstyled")} id={link.key+"-ul"}>
                   {link.subLinks.map(subLink => {
                       return <SideBarLink link={subLink} parentLinkChangeHandler={parentLinkChangeHandler} key={subLink.key}
                                 parentPages={this.getParentPages(link)}
-                                currentLoadedPage={currentLoadedPage}/>;
+                                currentLoadedPage={currentLoadedPage}
+                                isIntialLoad={this.props.isIntialLoad}/>;
                     })
                   }
                 </ul>
@@ -78,7 +131,8 @@ SideBarLink.propTypes = {
   link: PropTypes.object.isRequired,
   parentLinkChangeHandler: PropTypes.func.isRequired,
   parentPages: PropTypes.array,
-  currentLoadedPage: PropTypes.object.isRequired
+  currentLoadedPage: PropTypes.object.isRequired,
+  isIntialLoad: PropTypes.bool
 };
 
 export default SideBarLink;

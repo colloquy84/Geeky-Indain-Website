@@ -43,7 +43,8 @@ SideBar.propTypes = {
   hideSideBar:PropTypes.bool.isRequired,
   sideNav: PropTypes.object.isRequired,
   parentPages: PropTypes.array,
-  onLinkChange: PropTypes.func.isRequired
+  onLinkChange: PropTypes.func.isRequired,
+  isIntialLoad: PropTypes.bool
 };
 
 export default SideBar;

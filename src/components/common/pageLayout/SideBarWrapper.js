@@ -4,6 +4,7 @@ import { Route } from "react-router-dom";
 import * as pageDetailAction from "../../../redux/actions/pageDetailAction";
 import PropTypes from "prop-types";
 import { bindActionCreators} from "redux";
+import { toast } from "react-toastify";
 import './sideBar.css';
 
 import SideBar from "./SideBar";
@@ -80,6 +81,17 @@ class SideBarWrapper extends React.Component {
     }
   }
 
+  addParentPagesFromURLRoute(sideNav,urlOrRoute,parentPages){
+    const newParentPages = parentPages.slice();
+    const allUrlPaths = urlOrRoute.split("/");
+    if(allUrlPaths.length > 2){
+      for(let index =2; index < allUrlPaths.length; index++){
+        newParentPages.push(this.getCurrentLoadedPageDetails(sideNav, allUrlPaths[index]));
+      }
+    }
+    return newParentPages;
+  }
+
   loadContentFromParentUrlOrRoutePage(sideNav, urlOrRoute, parentPages){
     const parentPagesForSideNav = parentPages.slice();
     if(urlOrRoute && urlOrRoute.lastIndexOf("/") >= 0 ){
@@ -89,7 +101,7 @@ class SideBarWrapper extends React.Component {
           ", newCurrentLoadedPage:"+newCurrentLoadedPage);
           const currentLoadedPage = this.getCurrentLoadedPageDetails(sideNav, newCurrentLoadedPage)
         this.setState({currentLoadedPage: currentLoadedPage, parentPagesForSideNav:parentPagesForSideNav,
-            parentPagesForBreadCrumb:parentPages});
+            parentPagesForBreadCrumb:this.addParentPagesFromURLRoute(sideNav,urlOrRoute, parentPages)});
       }
     }else{
       console.log("SideBarWrapper -> currentLoadedPage: "+ this.state.currentLoadedPage+
@@ -107,7 +119,9 @@ class SideBarWrapper extends React.Component {
 
     if (pageType.length != 0) {
       actions.getSideNav(pageType).catch(error => {
-        alert("Loading page "+pageType+"failed" + error);
+        toast.error("Loading page "+pageType+"failed" + error.message,{
+          autoClose:false
+        });
       });
     }
   }
@@ -121,8 +135,20 @@ class SideBarWrapper extends React.Component {
             +", parentPages"+parentPages);
       const parentPagesForBreadCrumb = parentPages.slice();
       parentPagesForBreadCrumb.push(newPage);
-      // parentPagesForBreadCrumb.push({})
       this.setState({currentLoadedPage: newPage,parentPagesForBreadCrumb:parentPagesForBreadCrumb});
+  }
+
+  onBreadCrumbLinkClick = (currentLoadedPage, parentPagesForBreadCrumb, newPage)=> {
+      console.log("SideBarWrapper -> currentLoadedPage:",currentLoadedPage+", newPage: ",newPage
+            +", parentPages",parentPagesForBreadCrumb);
+      const newParentPagesForBreadCrumb = [];
+      for(let index =0; index < parentPagesForBreadCrumb.length; index++){
+        newParentPagesForBreadCrumb.push(parentPagesForBreadCrumb[index]);
+        if(newPage.page == parentPagesForBreadCrumb[index].page){
+          break;
+        }
+      }
+      this.setState({currentLoadedPage: newPage,parentPagesForBreadCrumb:newParentPagesForBreadCrumb});
   }
 
   render() {
@@ -142,6 +168,7 @@ class SideBarWrapper extends React.Component {
               <MainContent colapseLinkClicked = {this.sideBarToggled}
                   parentPages={this.state.parentPagesForBreadCrumb}
                   parentPage ={this.props.pageType}
+                  onBreadCrumbLinkClick = {this.onBreadCrumbLinkClick}
                   currentLoadedPage = {this.state.currentLoadedPage}/>
             </Route>
           </div>
