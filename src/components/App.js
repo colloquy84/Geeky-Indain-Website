@@ -5,6 +5,7 @@ import AboutPage from "./about/AboutPage";
 import Header from "./common/Header";
 import Footer from "./common/Footer";
 import PageNotFound from "./PageNotFound";
+import GoToTop from "./common/scroll/GoToTop";
 import JavaHome from "./java/JavaHomePage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -23,6 +24,7 @@ function App() {
         </Switch>
       </div>
       <Footer />
+      <GoToTop scrollStepInPx="100" delayInMs="10"/>
       <ToastContainer autoClose={3000} hideProgressBar />
     </div>
   );

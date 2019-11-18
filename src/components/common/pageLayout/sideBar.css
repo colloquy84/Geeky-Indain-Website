@@ -168,7 +168,7 @@
     MEDIAQUERIES
 ----------------------------------------------------- */
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
     #sidebar {
         margin-left: -250px;
     }

@@ -1,0 +1,21 @@
+.goToTop{
+  position: fixed;
+  cursor: pointer;
+  bottom: 50px;
+  right: 50px;
+  color: #f7f7f7;
+  background-color: #20a8d8;
+  z-index: 10;
+  width: 50px;
+  text-align: center;
+  height: 50px;
+  border-radius: 5px;
+  line-height: 46px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  scroll-behavior: [ auto | smooth ];
+}
+
+.goToTop:hover{
+  transform: scale(1.1);
+}
