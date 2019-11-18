@@ -1,14 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import {Helmet} from "react-helmet";
 import * as pageDetailAction from "../../../redux/actions/pageDetailAction";
+import { WEBSITE_URL } from "../../../util/appConstants";
 import { bindActionCreators} from "redux";
 import { toast } from "react-toastify";
 import Spinner from "../Spinner";
 import "./mainContent.css";
 
 class MainContent extends React.Component {
-  state = {currentLoadedPage:''};
+  state = {currentLoadedPage:'', urlOfPage:WEBSITE_URL};
 
   componentDidMount() {
     this.getPageContent(this.props.currentLoadedPage.page).catch(error => {
@@ -26,6 +28,21 @@ class MainContent extends React.Component {
         });
       });
     }
+    this.setState({urlOfPage: this.getURLOfThisPage(newProps.parentPages)});
+  }
+
+  getURLOfThisPage(pages){
+    let pageURL=WEBSITE_URL;
+    if( pages && pages.length >0){
+      for(let index =0; index < pages.length; index++){
+        if(index == 0){
+          pageURL = pageURL +pages[index].page;
+        }else{
+          pageURL = pageURL + "/" +pages[index].page;
+        }
+      }
+    }
+    return pageURL;
   }
 
   getPageContent = async page => {
@@ -57,6 +74,12 @@ class MainContent extends React.Component {
           <Spinner / >
         ) : (
           <>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>{this.props.pageContent.title}</title>
+                <link rel="canonical" href={this.state.urlOfPage} />
+                <meta name="description" content={this.props.pageContent.description} />
+            </Helmet>
             <h3>{this.props.pageContent.heading}</h3>
             {this.props.pageContent.dataList && this.props.pageContent.dataList.map((content, index) => {
               return (
@@ -73,7 +96,6 @@ class MainContent extends React.Component {
 MainContent.propTypes = {
   parentPage: PropTypes.string.isRequired,
   currentLoadedPage: PropTypes.object,
-  colapseLinkClicked: PropTypes.func.isRequired,
   parentPages: PropTypes.array,
   pageContent: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired,

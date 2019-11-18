@@ -75,7 +75,7 @@ class SideBarWrapper extends React.Component {
       }else{
         const currentLoadedPage = this.getCurrentLoadedPage(currentPageLink, sideNav.links);
         if(currentLoadedPage == null){
-          // window.location = "/404";
+          window.location = "/404";
         }else{
           return currentLoadedPage;
         }
