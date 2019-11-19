@@ -14,9 +14,9 @@ import MainContent from "./MainContent";
 import Spinner from "../Spinner";
 
 class SideBarWrapper extends React.Component {
-  state = {firstPageLoaded: false, hideSideBar : false, currentLoadedPage : {},
+  state = {firstPageLoaded: false, hideOverlaySideBar : false,hideSlidingSideBar:false, currentLoadedPage : {},
       parentPagesForSideNav:[],
-      parentPagesForBreadCrumb:[]};
+      parentPagesForBreadCrumb:[], isMobile: false};
 
   componentWillReceiveProps(newProps){
     const {sideNav, parentRouteUrl} = newProps;
@@ -103,14 +103,15 @@ class SideBarWrapper extends React.Component {
           ", newCurrentLoadedPage:"+newCurrentLoadedPage);
           const currentLoadedPage = this.getCurrentLoadedPageDetails(sideNav, newCurrentLoadedPage)
         this.setState({currentLoadedPage: currentLoadedPage, parentPagesForSideNav:parentPagesForSideNav,
-            parentPagesForBreadCrumb:this.addParentPagesFromURLRoute(sideNav,urlOrRoute, parentPages)});
+            parentPagesForBreadCrumb:this.addParentPagesFromURLRoute(sideNav,urlOrRoute, parentPages),
+          isMobile: window.nnerWidth < 993});
       }
     }else{
       console.log("SideBarWrapper -> currentLoadedPage: "+ this.state.currentLoadedPage+
       ", newCurrentLoadedPage:"+urlOrRoute);
       const currentLoadedPage = this.getCurrentLoadedPageDetails(sideNav, urlOrRoute)
       this.setState({currentLoadedPage: currentLoadedPage, parentPagesForSideNav:parentPagesForSideNav,
-          parentPagesForBreadCrumb:parentPages});
+          parentPagesForBreadCrumb:parentPages, isMobile: window.nnerWidth < 993});
     }
   }
 
@@ -126,18 +127,43 @@ class SideBarWrapper extends React.Component {
         });
       });
     }
+
+    window.addEventListener('resize', () => {
+        this.setState({
+            isMobile: window.innerWidth < 993
+        });
+    }, false);
+    this.setState({
+        isMobile: !this.state.isMobile
+    });
+    setInterval(()=>{
+      this.setState({
+          isMobile: window.innerWidth < 993
+      });
+    }, 100);
   }
 
   sideBarToggled = () => {
-    this.setState({hideSideBar: !this.state.hideSideBar});
+    if(this.state.isMobile){
+      this.setState({hideOverlaySideBar: !this.state.hideOverlaySideBar});
+    }else{
+      this.setState({hideSlidingSideBar: !this.state.hideSlidingSideBar});
+    }
+
   };
+
+  onOverlaySideBarClose= () => {
+    this.setState({hideOverlaySideBar: !this.state.hideOverlaySideBar,
+      hideSlidingSideBar: !this.state.hideSlidingSideBar});
+  }
 
   onLinkChange = (currentLoadedPage, parentPages, newPage)=> {
       console.log("SideBarWrapper -> currentLoadedPage:"+currentLoadedPage+", newPage: "+newPage
             +", parentPages"+parentPages);
       const parentPagesForBreadCrumb = parentPages.slice();
       parentPagesForBreadCrumb.push(newPage);
-      this.setState({currentLoadedPage: newPage,parentPagesForBreadCrumb:parentPagesForBreadCrumb});
+      this.setState({currentLoadedPage: newPage,parentPagesForBreadCrumb:parentPagesForBreadCrumb,
+          hideOverlaySideBar: !this.state.hideOverlaySideBar});
   }
 
   onBreadCrumbLinkClick = (parentPagesForBreadCrumb, newPage)=> {
@@ -153,22 +179,27 @@ class SideBarWrapper extends React.Component {
 
   render() {
     return (
-      <div className="geek-main-content"> {
+      <> {
         this.props.loading ? (
           <Spinner />
         ) : (
           <div className="sideBarwrapper">
             { this.props.sideNav && <SideBar sideNav = { this.props.sideNav}
-              hideSideBar={this.state.hideSideBar}
+              hideOverlaySideBar={this.state.hideOverlaySideBar}
+              hideSlidingSideBar={this.state.hideSlidingSideBar}
+              onOverlaySideBarClose={this.onOverlaySideBarClose}
               onLinkChange = {this.onLinkChange}
               parentPages={this.state.parentPagesForSideNav}
-              currentLoadedPage = {this.state.currentLoadedPage}/>
+              currentLoadedPage = {this.state.currentLoadedPage}
+              isMobile={this.state.isMobile}/>
             }
-            <div id="content">
-              <div className="mainContentHeader">
-                <a className="sidebarToggler" onClick={() => this.sideBarToggled()}>
-                  <i className="fas fa-bars"></i>
-                </a>
+            <div id="content" className="pt-0 pb-0">
+              <div className="contentTopBar">
+                <div className="sidebarToggler mb-md-10">
+                  <a onClick={() => this.sideBarToggled()}>
+                    <i className="fas fa-bars"></i>
+                  </a>
+                </div>
                 <BreadCrumb links={this.state.parentPagesForBreadCrumb}
                     onBreadCrumbLinkClick={this.onBreadCrumbLinkClick}/>
               </div>
@@ -183,7 +214,7 @@ class SideBarWrapper extends React.Component {
           </div>
         )
       }
-    </div>
+    </>
     );
   }
 }

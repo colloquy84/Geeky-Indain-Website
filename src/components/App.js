@@ -24,7 +24,7 @@ function App() {
         </Switch>
       </div>
       <Footer />
-      <GoToTop scrollStepInPx="100" delayInMs="10"/>
+      <GoToTop scrollStepInPx={100} delayInMs={10}/>
       <ToastContainer autoClose={3000} hideProgressBar />
     </div>
   );

@@ -1,4 +1,9 @@
 .sidebarToggler{
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.sidebarToggler a{
     padding: .25rem .75rem;
     font-size: 1.25rem;
     line-height: 1;
@@ -9,12 +14,18 @@
     border-color: rgba(0,0,0,.1);
   }
 
-  .sidebarToggler:hover{
-    border-color: rgba(0,0,0,.3);
-  }
+.sidebarToggler a:hover{
+  border-color: rgba(0,0,0,.3);
+}
 
-.mainContentHeader{
+#content {
+    width: 100%;
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+.contentTopBar{
   margin: 20px 0;
   border-bottom: 1px solid #c6d0da;
-
 }

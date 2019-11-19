@@ -1,4 +1,74 @@
 
+.slidingSidebar {
+    min-width: 250px;
+    max-width: 250px;
+    background: #eee;
+    color: #999;
+    padding: 10px 0;
+    transition: all 0.3s;
+    border-right: 1px solid #c6d0da;
+}
+
+.slidingSidebar.active {
+    margin-left: -250px;
+}
+
+.overlaySidebar {
+    width: 250px;
+    position: fixed;
+    top: 90px;
+    left: -250px;
+    height: 100vh;
+    z-index: 999;
+    padding: 10px 0;
+    background: #eee;
+    color: #999;
+    transition: all 0.3s;
+    overflow-y: scroll;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+.overlaySidebar.active {
+    left: 0;
+}
+
+#dismiss {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    background: #20a8d8;
+    color: #f7f7f7;
+    position: absolute;
+    top: 25px;
+    right: 10px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+#dismiss:hover {
+    background: #fff;
+    color: #20a8d8;
+}
+
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 998;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+.sidebar-overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+
 #sidebar a,
 #sidebar a:hover,
 #sidebar a:focus {
@@ -38,19 +108,6 @@
     width: 100%;
     align-items: stretch;
     background: #fafafa;
-}
-
-#sidebar {
-    min-width: 250px;
-    max-width: 250px;
-    background: #eee;
-    color: #999;
-    transition: all 0.3s;
-    border-right: 1px solid #c6d0da;
-}
-
-#sidebar.active {
-    margin-left: -250px;
 }
 
 #sidebar .fab, #sidebar .fas{
@@ -154,28 +211,17 @@
 }
 
 /* ---------------------------------------------------
-    CONTENT STYLE
------------------------------------------------------ */
-
-#content {
-    width: 100%;
-    padding: 20px;
-    min-height: 100vh;
-    transition: all 0.3s;
-}
-
-/* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
 
 @media (max-width: 992px) {
-    #sidebar {
+    .sidebar {
         margin-left: -250px;
     }
-    #sidebar.active {
+    .slidingSidebar.active {
         margin-left: 0;
     }
-    #sidebarCollapse span {
+    .slidingSidebar span {
         display: none;
     }
 }

@@ -1,10 +1,11 @@
   import React from "react";
   import { NavLink } from "react-router-dom";
+  import "../../css/header.css";
 
   const Header = () => {
     const activeStyle = { /*color: "#F15B2A" */};
     return (
-      <nav className="navbar fixed-top navbar-icon-top navbar-expand-md navbar-dark bg-dark">
+      <nav id="mainNav" className="navbar fixed-top navbar-icon-top navbar-expand-md navbar-dark bg-dark">
         <a className="navbar-brand geeky-navbar-brand" href="/">
             <img src={require('../../../assets/Logo/Inline-Dark-BG/FullColor_TransparentBg_RECT.png')}
             width="300" height="50" className="d-inline-block align-top " alt=""></img>
@@ -38,7 +39,7 @@
             </li>*/}
           </ul>
           <ul className="navbar-nav ">
-            <li className="nav-item">
+            <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
               <NavLink className="nav-link" to="/javaHome" activeStyle={activeStyle}>
                     <i className="fab fa-java">
                       <span className="badge badge-success">1</span>
@@ -46,7 +47,7 @@
                     Java
               </NavLink>
             </li>
-            <li className="nav-item">
+            <li className="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show">
               <NavLink className="nav-link" to="/about" activeStyle={activeStyle}>
                       <i className="fa fa-users"></i>
                       About us

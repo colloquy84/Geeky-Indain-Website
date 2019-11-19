@@ -1,7 +1,7 @@
 import React from "react";
 
 const PageNotFound = () => (
-	<div className="row flex-xl-nowrap geek-main-content">
+	<div className="row flex-xl-nowrap">
 	    <section id="not-found" className="notFoundPage">
 		    <div id="title"></div>
 		    <div className="circles">

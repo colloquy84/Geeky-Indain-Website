@@ -3,7 +3,7 @@ import React from "react";
 
 
 const JavaHome = () => (
-  <div className="row flex-xl-nowrap geek-main-content">
+  <div className="row flex-xl-nowrap">
     <div className="col-12 col-md-3 col-xl-2 bd-sidebar p-1 mt-4">
 
     </div>
