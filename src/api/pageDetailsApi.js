@@ -1,4 +1,8 @@
 import { handleResponse, handleError, getBaseURL } from "./apiUtils";
+// import 'whatwg-fetch';
+// import 'imports-loader';
+// import 'exports-loader';
+
 const baseUrl = getBaseURL() + "/pages/";
 const DATA_SUFFIX = '.json';
 

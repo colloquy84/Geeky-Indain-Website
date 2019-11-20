@@ -63,6 +63,9 @@ module.exports = {
         minifyCSS: true,
         minifyURLs: true
       }
+    }),
+    new webpack.ProvidePlugin({
+      'fetch': 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
     })
   ],
   module: {

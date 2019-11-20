@@ -59,8 +59,8 @@ constructor(props){
 
   isCurrentLoadedPageIsChildrenOfThisLink(link, currentLoadedPage, allComponentLoaded,
       classesOnSucces, classesOnFailure){
-    // console.log("linkName: "+link.name+", isInitalLoad: "+this.isIntialLoad,
-    //   ", allComponentLoaded: "+allComponentLoaded);
+    console.log("linkName: "+link.name+", isInitalLoad: "+this.isIntialLoad,
+      ", allComponentLoaded: "+allComponentLoaded);
     let returnedClass= classesOnFailure;
     if(this.isIntialLoad){
       if(link.page == currentLoadedPage.page){

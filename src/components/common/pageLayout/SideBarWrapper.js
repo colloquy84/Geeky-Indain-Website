@@ -162,8 +162,12 @@ class SideBarWrapper extends React.Component {
             +", parentPages"+parentPages);
       const parentPagesForBreadCrumb = parentPages.slice();
       parentPagesForBreadCrumb.push(newPage);
-      this.setState({currentLoadedPage: newPage,parentPagesForBreadCrumb:parentPagesForBreadCrumb,
-          hideOverlaySideBar: !this.state.hideOverlaySideBar});
+      if(this.state.isMobile){
+        this.setState({currentLoadedPage: newPage,parentPagesForBreadCrumb:parentPagesForBreadCrumb,
+            hideOverlaySideBar: !this.state.hideOverlaySideBar});
+      }else{
+        this.setState({currentLoadedPage: newPage,parentPagesForBreadCrumb:parentPagesForBreadCrumb});
+      }
   }
 
   onBreadCrumbLinkClick = (parentPagesForBreadCrumb, newPage)=> {

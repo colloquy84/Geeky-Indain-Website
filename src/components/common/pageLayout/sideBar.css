@@ -168,6 +168,7 @@
 #sidebar ul li a.active + a.dropdown-toggle,
 #sidebar ul li a.active + a.dropdown-toggle::after {
   font-weight: 500;
+  color: #20a8d8;
 }
 
 #sidebar ul li a.activeLink,
