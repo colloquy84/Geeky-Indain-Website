@@ -11,8 +11,7 @@ constructor(props){
   this.isIntialLoad = true;
 }
 
-
-  onLinkClick = (newPage)=> {
+onLinkClick = (newPage)=> {
     if(newPage != this.props.currentLoadedPage){
       console.log("SideBarLink -> currentLoadedPage:", this.props.currentLoadedPage+", newPage: "+newPage
             +", parentPages"+this.props.parentPages);
@@ -59,8 +58,6 @@ constructor(props){
 
   isCurrentLoadedPageIsChildrenOfThisLink(link, currentLoadedPage, allComponentLoaded,
       classesOnSucces, classesOnFailure){
-    console.log("linkName: "+link.name+", isInitalLoad: "+this.isIntialLoad,
-      ", allComponentLoaded: "+allComponentLoaded);
     let returnedClass= classesOnFailure;
     if(this.isIntialLoad){
       if(link.page == currentLoadedPage.page){
@@ -77,8 +74,6 @@ constructor(props){
     if(allComponentLoaded){
       this.isIntialLoad = false;
     }
-    // console.log("Returned class: "+returnedClass);
-
     return returnedClass;
   }
 
@@ -103,8 +98,7 @@ constructor(props){
                   {link.subLinks.map(subLink => {
                       return <SideBarLink link={subLink} parentLinkChangeHandler={parentLinkChangeHandler} key={subLink.key}
                                 parentPages={this.getParentPages(link)}
-                                currentLoadedPage={currentLoadedPage}
-                                isIntialLoad={this.props.isIntialLoad}/>;
+                                currentLoadedPage={currentLoadedPage}/>;
                     })
                   }
                 </ul>

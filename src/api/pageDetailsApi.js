@@ -1,5 +1,5 @@
 import { handleResponse, handleError, getBaseURL } from "./apiUtils";
-// import 'whatwg-fetch';
+import 'whatwg-fetch';
 // import 'imports-loader';
 // import 'exports-loader';
 

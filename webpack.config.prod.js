@@ -12,7 +12,7 @@ module.exports = {
   devtool: "source-map",
   entry: {
     geek: "./src/index",
-    vendor: ['babel-polyfill', 'react', 'react-dom', 'redux']
+    vendor: ['whatwg-fetch','babel-polyfill', 'react', 'react-dom', 'redux']
   },
   output: {
     path: path.resolve(__dirname, "build"),
@@ -63,9 +63,6 @@ module.exports = {
         minifyCSS: true,
         minifyURLs: true
       }
-    }),
-    new webpack.ProvidePlugin({
-      'fetch': 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
     })
   ],
   module: {

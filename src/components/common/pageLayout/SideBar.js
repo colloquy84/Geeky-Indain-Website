@@ -6,7 +6,6 @@ import SideBarLink from "./SideBarLink";
 class SideBar extends React.Component {
   state = {};
 
-
   onLinkChange = (currentLoadedPage, parentPages, newPage)=> {
       console.log("SideBar -> currentLoadedPage:"+currentLoadedPage+", newPage: "+newPage
             +", parentPages", parentPages);
@@ -63,7 +62,6 @@ SideBar.propTypes = {
   sideNav: PropTypes.object.isRequired,
   parentPages: PropTypes.array,
   onLinkChange: PropTypes.func.isRequired,
-  isIntialLoad: PropTypes.bool,
   isMobile: PropTypes.bool
 };
 

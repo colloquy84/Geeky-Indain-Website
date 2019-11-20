@@ -17,6 +17,7 @@ class SideBarWrapper extends React.Component {
   state = {firstPageLoaded: false, hideOverlaySideBar : false,hideSlidingSideBar:false, currentLoadedPage : {},
       parentPagesForSideNav:[],
       parentPagesForBreadCrumb:[], isMobile: false};
+  RESIZE_HEIGHT = 769;
 
   componentWillReceiveProps(newProps){
     const {sideNav, parentRouteUrl} = newProps;
@@ -32,6 +33,9 @@ class SideBarWrapper extends React.Component {
         console.log("SideBarWrapper -> loading from sidenav props", sideNav);
         this.loadContentFromParentUrlOrRoutePage(sideNav, sideNav.mainPage, this.getDefaultParentPages(sideNav, parentRouteUrl));
       }
+      this.setState({
+          isMobile: window.innerWidth < this.RESIZE_HEIGHT
+      });
     }
   }
 
@@ -130,17 +134,9 @@ class SideBarWrapper extends React.Component {
 
     window.addEventListener('resize', () => {
         this.setState({
-            isMobile: window.innerWidth < 993
+            isMobile: window.innerWidth < this.RESIZE_HEIGHT
         });
     }, false);
-    this.setState({
-        isMobile: !this.state.isMobile
-    });
-    setInterval(()=>{
-      this.setState({
-          isMobile: window.innerWidth < 993
-      });
-    }, 100);
   }
 
   sideBarToggled = () => {
