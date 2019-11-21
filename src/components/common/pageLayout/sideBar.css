@@ -129,10 +129,11 @@
 
 #sidebar ul p {
     color: #666;
-    padding: 20px;
+    padding: 20px 10px 20px 5px;
     background: #eee;
-    font-weight: 500;
+    font-weight: 700;
     margin-bottom: 0;
+    text-align: center;
 }
 
 #sidebar ul li {
@@ -167,7 +168,7 @@
 #sidebar ul li a.active,
 #sidebar ul li a.active + a.dropdown-toggle,
 #sidebar ul li a.active + a.dropdown-toggle::after {
-  font-weight: 500;
+  font-weight: 600;
   color: #20a8d8;
 }
 

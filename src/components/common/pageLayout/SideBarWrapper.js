@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Route } from "react-router-dom";
+import { MEDIUM_SCREEN_WIDTH } from "../../../util/appConstants";
 import * as pageDetailAction from "../../../redux/actions/pageDetailAction";
 import PropTypes from "prop-types";
 import { bindActionCreators} from "redux";
@@ -17,7 +18,6 @@ class SideBarWrapper extends React.Component {
   state = {firstPageLoaded: false, hideOverlaySideBar : false,hideSlidingSideBar:false, currentLoadedPage : {},
       parentPagesForSideNav:[],
       parentPagesForBreadCrumb:[], isMobile: false};
-  RESIZE_HEIGHT = 769;
 
   componentWillReceiveProps(newProps){
     const {sideNav, parentRouteUrl} = newProps;
@@ -34,7 +34,7 @@ class SideBarWrapper extends React.Component {
         this.loadContentFromParentUrlOrRoutePage(sideNav, sideNav.mainPage, this.getDefaultParentPages(sideNav, parentRouteUrl));
       }
       this.setState({
-          isMobile: window.innerWidth < this.RESIZE_HEIGHT
+          isMobile: window.innerWidth < MEDIUM_SCREEN_WIDTH
       });
     }
   }
@@ -134,7 +134,7 @@ class SideBarWrapper extends React.Component {
 
     window.addEventListener('resize', () => {
         this.setState({
-            isMobile: window.innerWidth < this.RESIZE_HEIGHT
+            isMobile: window.innerWidth < MEDIUM_SCREEN_WIDTH
         });
     }, false);
   }
@@ -203,6 +203,7 @@ class SideBarWrapper extends React.Component {
                 <BreadCrumb links={this.state.parentPagesForBreadCrumb}
                     onBreadCrumbLinkClick={this.onBreadCrumbLinkClick}/>
               </div>
+              <hr/>
               <Route path={this.props.parentRouteUrl+"/:id"}>
                 <MainContent colapseLinkClicked = {this.sideBarToggled}
                     parentPages={this.state.parentPagesForBreadCrumb}

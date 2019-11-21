@@ -1,10 +1,11 @@
 .sidebarToggler{
   display: inline-block;
-  margin-bottom: 5px;
+  margin-bottom: 0;
+  vertical-align: middle;
 }
 
 .sidebarToggler a{
-    padding: .25rem .75rem;
+    padding: 5px 10px;
     font-size: 1.25rem;
     line-height: 1;
     background-color: transparent;
@@ -26,6 +27,11 @@
 }
 
 .contentTopBar{
-  margin: 20px 0;
-  border-bottom: 1px solid #c6d0da;
+  margin: 20px 0 5px 0;
+}
+
+@media (min-width: 992px) {
+  .contentTopBar + hr {
+    margin-top: 0;
+  }
 }

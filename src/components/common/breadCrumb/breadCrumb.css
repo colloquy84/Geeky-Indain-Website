@@ -1,6 +1,7 @@
 #breadCrumb{
   display: inline-block;
-  margin-left: 10px;
+  margin-left: 0;
+  vertical-align: middle;
 }
 
 #breadCrumb nav,

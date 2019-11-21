@@ -33,7 +33,7 @@ class BreadCrumb extends React.Component {
 
   render(){
     return (
-      <div id="breadCrumb" className="d-none d-lg-inline-block">
+      <div id="breadCrumb" className="d-none d-md-inline-block">
       <nav aria-label="breadcrumb">
         <ol className="breadcrumb">
           <li className="breadcrumb-item"><a href="/"><i className="fa fa-home"/></a></li>
