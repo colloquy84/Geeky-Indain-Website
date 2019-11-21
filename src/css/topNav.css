@@ -108,7 +108,7 @@
     padding-bottom: 0;
   }
 
-  .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link > .fa ,
+  .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link > .fa, 
   .navbar-icon-top.navbar-expand-xl .navbar-nav .nav-link > .fab{
     display: block;
     width: 48px;

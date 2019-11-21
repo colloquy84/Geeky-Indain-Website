@@ -2,7 +2,7 @@
   "name": "ps-redux",
   "description": "The Geeky Indian website design and developed by Arun Pandey",
   "scripts": {
-    "copyvendor:js": "rimraf ./build && mkdir build && mkdir build/vendor && cpx -v \"vendor/**/*.min.js\" build/vendor/ &&  cpx -v \"vendor/**/*.min.js.map\" build/vendor/",
+    "copyvendor:js": "rimraf ./build &&  rimraf ./dist && mkdir build dist && mkdir build/vendor && cpx -v \"vendor/**/*.min.js\" build/vendor/ &&  cpx -v \"vendor/**/*.min.js.map\" build/vendor/",
     "copypagedata:json": "run-p copyvendor:js &&  cpx -v \"pages/**/*.json\" build/pages/",
     "copyvendor:webfonts": "run-p copypagedata:json &&  cpx -v \"vendor/**/webfonts/*\" build/vendor/",
     "copyvendor:img": "run-p copyvendor:webfonts &&  cpx -v \"vendor/**/img/*\" build/vendor/",
@@ -17,7 +17,8 @@
     "clean:build": "run-p copyvendor:css",
     "prebuild": "run-p clean:build test:ci",
     "build": "webpack --config webpack.config.prod.js",
-    "postbuild": "run-p start:api serve:build",
+    "postbuild": "run-p reactsnap:command start:api serve:build",
+    "reactsnap:command": "react-snap",
     "serve:build": "http-server ./build"
   },
   "jest": {
@@ -83,6 +84,9 @@
     "webpack-bundle-analyzer": "3.6.0",
     "webpack-cli": "3.3.0",
     "webpack-dev-server": "3.2.1"
+  },
+  "reactSnap": {
+    "inlineCss": true
   },
   "engines": {
     "node": ">=8"

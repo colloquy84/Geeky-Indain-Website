@@ -94,7 +94,7 @@ onLinkClick = (newPage)=> {
                         "preDropDownAnchor dropdown-toggle", "preDropDownAnchor dropdown-toggle collapsed")}>
                   </a>
                 <ul className={this.isCurrentLoadedPageIsChildrenOfThisLink(link,currentLoadedPage, true,
-                      "collapse list-unstyled show","collapse list-unstyled")} id={link.key+"-ul"}>
+                      "sidebardropdown collapse list-unstyled show","collapse list-unstyled")} id={link.key+"-ul"}>
                   {link.subLinks.map(subLink => {
                       return <SideBarLink link={subLink} parentLinkChangeHandler={parentLinkChangeHandler} key={subLink.key}
                                 parentPages={this.getParentPages(link)}
