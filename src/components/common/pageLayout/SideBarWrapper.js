@@ -22,9 +22,14 @@ class SideBarWrapper extends React.Component {
   componentWillReceiveProps(newProps){
     const {sideNav, parentRouteUrl} = newProps;
     if(sideNav && sideNav.title && parentRouteUrl){
-      const path = location.pathname;
-      console.log("location: ", location);
+      let path = location.pathname;
       console.log("SideBarWrapper -> path: "+path);
+      // logic to remove the last trailing / from path
+      if(path && path.lastIndexOf("/") + 1 == path.length){
+        path = path.substring(0, path.lastIndexOf("/"));
+      }
+      console.log("SideBarWrapper -> new path: "+path);
+
       if(path && path.indexOf("/") >= 0 && path.indexOf("/") != path.lastIndexOf("/")){
         console.log("SideBarWrapper -> loading from url path");
         this.loadContentFromParentUrlOrRoutePage(sideNav,path,
@@ -47,7 +52,6 @@ class SideBarWrapper extends React.Component {
           name:sideNav.title,
           shortName:sideNav.shortName})
     }
-    console.log("parent Pages ->", parentPages);
     return parentPages;
   }
 
@@ -103,16 +107,12 @@ class SideBarWrapper extends React.Component {
     if(urlOrRoute && urlOrRoute.lastIndexOf("/") >= 0 ){
       const newCurrentLoadedPage = urlOrRoute.substring(urlOrRoute.lastIndexOf("/")+1);
       if(newCurrentLoadedPage){
-          console.log("SideBarWrapper -> currentLoadedPage: "+ this.state.currentLoadedPage+
-          ", newCurrentLoadedPage:"+newCurrentLoadedPage);
           const currentLoadedPage = this.getCurrentLoadedPageDetails(sideNav, newCurrentLoadedPage)
         this.setState({currentLoadedPage: currentLoadedPage, parentPagesForSideNav:parentPagesForSideNav,
             parentPagesForBreadCrumb:this.addParentPagesFromURLRoute(sideNav,urlOrRoute, parentPages),
           isMobile: window.nnerWidth < 993});
       }
     }else{
-      console.log("SideBarWrapper -> currentLoadedPage: "+ this.state.currentLoadedPage+
-      ", newCurrentLoadedPage:"+urlOrRoute);
       const currentLoadedPage = this.getCurrentLoadedPageDetails(sideNav, urlOrRoute)
       this.setState({currentLoadedPage: currentLoadedPage, parentPagesForSideNav:parentPagesForSideNav,
           parentPagesForBreadCrumb:parentPages, isMobile: window.nnerWidth < 993});
