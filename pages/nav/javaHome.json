@@ -1,0 +1,33 @@
+{
+  "title":"Java Home",
+  "mainPage":"javaHome",
+  "shortName":"Java",
+  "links": [
+    {
+      "key":"designPatterns",
+      "name": "Design Patterns",
+      "shortName":"Design Patterns",
+      "page": "designPatterns",
+      "iconClass":"fab fa-java",
+      "subLinks": [{
+          "key":"creationalDesignPatterns",
+          "name": "Creational",
+          "shortName":"Creational",
+          "page": "creationalDesignPatterns"
+        },
+        {
+          "key":"structuralDesignPatterns",
+          "name": "Structural",
+          "shortName":"Structural",
+          "page": "structuralDesignPatterns"
+        },
+        {
+          "key":"behaviouralDesignPatterns",
+          "name": "Behavioural",
+          "shortName":"Behavioural",
+          "page": "behaviouralDesignPatterns"
+        }
+      ]
+    }
+  ]
+}

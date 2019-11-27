@@ -8,9 +8,11 @@ import { bindActionCreators} from "redux";
 import { toast } from "react-toastify";
 import Spinner from "../Spinner";
 import "./mainContent.css";
+import PageNotFound from '../../PageNotFound';
+import DynamicHTMLComponent from './DynamicHTMLComponent'
 
 class MainContent extends React.Component {
-  state = {currentLoadedPage:'', urlOfPage:WEBSITE_URL};
+  state = {currentLoadedPage:'', urlOfPage:WEBSITE_URL, showPageNotFound:false};
 
   componentDidMount() {
     this.getPageContent(this.props.currentLoadedPage.page).catch(error => {
@@ -49,14 +51,15 @@ class MainContent extends React.Component {
     if(page && page != this.state.currentLoadedPage){
       try {
         // console.log("Loaded content for "+page);
-        this.setCurrentState({currentLoadedPage: page});
+        this.setCurrentState({currentLoadedPage: page, showPageNotFound:false});
         await this.props.actions.getPageContent(this.props.parentPage, page);
         // toast.success(page + "Page Loaded");
       } catch (error) {
-        toast.error(page + "could not be loaded for " + this.props.parentPage +
-          " section" + error.message, {
-            autoClose: false
-          });
+        // toast.error(page + " could not be loaded for " + this.props.parentPage +
+        //   " section " + error.message, {
+        //     autoClose: false
+        //   });
+          this.setState({showPageNotFound:true});
       }
     }else{
       console.log("Content for "+this.props.parentPage+" type "+page+" page is already loaded");
@@ -80,12 +83,16 @@ class MainContent extends React.Component {
                 <link rel="canonical" href={this.state.urlOfPage} />
                 <meta name="description" content={this.props.pageContent.description} />
             </Helmet>
-            <h3>{this.props.pageContent.heading}</h3>
-            {this.props.pageContent.dataList && this.props.pageContent.dataList.map((content, index) => {
-              return (
-                <p key={index}>{content.data}</p>
-              );
-            })}
+            {this.state.showPageNotFound ? <PageNotFound/>
+              :<>
+                <h3>{this.props.pageContent.heading}</h3>
+                {this.props.pageContent.dataList && this.props.pageContent.dataList.map((content, index) => {
+                  return (
+                      <DynamicHTMLComponent key={index} content={content}/> 
+                  );
+                })}
+              </>
+            }
           </>
         )}
       </>
