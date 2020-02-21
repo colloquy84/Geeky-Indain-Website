@@ -1,0 +1,12 @@
+{
+  "heading":"Java Design Patterns",
+  "title":"Java Design Patterns",
+  "description":"A Simple way to understand Java Design Patterns",
+  "dataList":[
+    {
+      "component":"div",
+      "classNames":"jumbotron",
+      "data":"Will get updated soon"
+    }
+  ]
+}
