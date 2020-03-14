@@ -1,6 +1,6 @@
 {
   "name": "ps-redux",
-  "description": "The Geeky Indian website design and developed by Arun Pandey",
+  "description": "The Geeky Indian Website design and developed by Arun Pandey",
   "scripts": {
     "copyvendor:js": "rimraf ./build &&  rimraf ./dist && mkdir build dist && mkdir build/vendor && cpx -v \"vendor/**/*.min.js\" build/vendor/ &&  cpx -v \"vendor/**/*.min.js.map\" build/vendor/",
     "copypagedata:json": "run-p copyvendor:js &&  cpx -v \"pages/**/*.json\" build/pages/",
