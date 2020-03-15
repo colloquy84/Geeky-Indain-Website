@@ -2,7 +2,7 @@
   "name": "ps-redux",
   "description": "The Geeky Indian Website design and developed by Arun Pandey",
   "scripts": {
-    "copyvendor:js": "rimraf ./build &&  rimraf ./dist && mkdir build dist && mkdir build/vendor && cpx -v \"vendor/**/*.min.js\" build/vendor/ &&  cpx -v \"vendor/**/*.min.js.map\" build/vendor/",
+    "copyvendor:js": "rimraf ./build &&  rimraf ./dist && mkdir build dist && mkdir \"build/vendor\" && cpx -v \"vendor/**/*.min.js\" build/vendor/ &&  cpx -v \"vendor/**/*.min.js.map\" build/vendor/",
     "copypagedata:json": "run-p copyvendor:js &&  cpx -v \"pages/**/*.json\" build/pages/",
     "copyvendor:webfonts": "run-p copypagedata:json &&  cpx -v \"vendor/**/webfonts/*\" build/vendor/",
     "copyvendor:img": "run-p copyvendor:webfonts &&  cpx -v \"vendor/**/img/*\" build/vendor/",
